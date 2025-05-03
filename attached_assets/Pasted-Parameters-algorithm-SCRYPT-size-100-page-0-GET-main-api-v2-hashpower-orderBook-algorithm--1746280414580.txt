@@ -1,0 +1,2055 @@
+Parameters 
+algorithm * 	
+SCRYPT
+size 	
+100
+page 	
+0
+GET /main/api/v2/hashpower/orderBook?algorithm=SCRYPT&size=100&page=0
+Request
+GET 
+Request Headers 
+Accept: application/json, text/plain, */*
+Content-Type:
+X-Time: 1746280387181
+X-Nonce: wtexjikowcyqny5nusj622vzhtccvs92
+X-Organization-Id: f866cefc-f81d-4aaa-a0f4-5acc2bceec2a
+X-Auth: 9f404806-d1dd-4726-ab5d-52e9f071d8e1:0a8223648b6c0abdd2a21302e8f71c4936bd6d9b626cbfd975e549ed81bd0a4b
+X-Request-Id: jx2gajsjjdcn7pot02wm1maxunqbdz2i
+X-User-Agent: name=Chrome;version=134.0.0.0;buildNumber=1;os=Windows;osVersion=10;deviceVersion=amd64;lang=uk
+X-User-Lang: ru
+Response: 200
+{
+  "stats": {
+    "USA": {
+      "updatedTs": "2025-05-03T13:53:06.873067526Z",
+      "totalSpeed": "78.63501416",
+      "marketFactor": "1000000000000.00000000",
+      "displayMarketFactor": "TH",
+      "priceFactor": "1000000000000.00000000",
+      "displayPriceFactor": "TH",
+      "orders": [
+        {
+          "id": "efabff71-b331-476d-8c13-decd71102f00",
+          "type": "FIXED",
+          "price": "0.01370000",
+          "limit": "0.77643571",
+          "rigsCount": 131,
+          "acceptedSpeed": "0.71697320",
+          "payingSpeed": "0.72784663",
+          "alive": true
+        },
+        {
+          "id": "5f47dd65-e70b-491d-9b63-93ec6622f3c2",
+          "type": "FIXED",
+          "price": "0.01360000",
+          "limit": "0.78214479",
+          "rigsCount": 134,
+          "acceptedSpeed": "0.55891841",
+          "payingSpeed": "0.57236165",
+          "alive": true
+        },
+        {
+          "id": "ff789edd-bf46-45fc-8244-d9e9c9beff1f",
+          "type": "FIXED",
+          "price": "0.01350000",
+          "limit": "4.13452800",
+          "rigsCount": 681,
+          "acceptedSpeed": "3.82538420",
+          "payingSpeed": "3.83619320",
+          "alive": true
+        },
+        {
+          "id": "0c031eda-8b86-4930-9355-4a299530a2ef",
+          "type": "FIXED",
+          "price": "0.01350000",
+          "limit": "0.78793846",
+          "rigsCount": 123,
+          "acceptedSpeed": "0.68032281",
+          "payingSpeed": "0.68195490",
+          "alive": true
+        },
+        {
+          "id": "0b211195-fcf9-4e92-a5ce-28226c27ca75",
+          "type": "BUSINESS",
+          "price": "0.01190000",
+          "limit": "0.14147559",
+          "rigsCount": 17,
+          "acceptedSpeed": "0.10262108",
+          "payingSpeed": "0.12380959",
+          "alive": true
+        },
+        {
+          "id": "9c0578a8-954a-423c-a261-4f3e5eaf1969",
+          "type": "BUSINESS",
+          "price": "0.01190000",
+          "limit": "0.14054144",
+          "rigsCount": 17,
+          "acceptedSpeed": "0.12637525",
+          "payingSpeed": "0.12607160",
+          "alive": true
+        },
+        {
+          "id": "1e3a79e4-a646-4d3c-a3f4-4d4c6bcdb0af",
+          "type": "BUSINESS",
+          "price": "0.01190000",
+          "limit": "0.12183676",
+          "rigsCount": 14,
+          "acceptedSpeed": "0.06597069",
+          "payingSpeed": "0.09665328",
+          "alive": true
+        },
+        {
+          "id": "f08fd78b-1c2f-4193-abb1-4e2d445879c3",
+          "type": "BUSINESS",
+          "price": "0.01190000",
+          "limit": "0.14986294",
+          "rigsCount": 22,
+          "acceptedSpeed": "0.15393162",
+          "payingSpeed": "0.11813844",
+          "alive": true
+        },
+        {
+          "id": "0617c676-4292-489a-852c-d770a972465b",
+          "type": "FIXED",
+          "price": "0.01190000",
+          "limit": "0.15091476",
+          "rigsCount": 28,
+          "acceptedSpeed": "0.06338419",
+          "payingSpeed": "0.05496126",
+          "alive": true
+        },
+        {
+          "id": "980bd89e-408e-49dc-ac4a-f12404feb0cd",
+          "type": "FIXED",
+          "price": "0.01190000",
+          "limit": "0.15091476",
+          "rigsCount": 22,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "3df6e466-b430-44a8-bb69-f2ce14a66f86",
+          "type": "FIXED",
+          "price": "0.01190000",
+          "limit": "0.15091476",
+          "rigsCount": 15,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "8afde00f-02f9-46b5-8731-5cdfab56f3b6",
+          "type": "FIXED",
+          "price": "0.01180000",
+          "limit": "0.90145501",
+          "rigsCount": 132,
+          "acceptedSpeed": "0.61389399",
+          "payingSpeed": "0.63417339",
+          "alive": true
+        },
+        {
+          "id": "8cb6c787-389f-4d65-b6d7-ce237cd12e52",
+          "type": "FIXED",
+          "price": "0.01170000",
+          "limit": "0.15349450",
+          "rigsCount": 20,
+          "acceptedSpeed": "0.11636498",
+          "payingSpeed": "0.10694468",
+          "alive": true
+        },
+        {
+          "id": "5342b3c9-1273-47c6-ad70-103c85faf503",
+          "type": "FIXED",
+          "price": "0.01160000",
+          "limit": "0.15481773",
+          "rigsCount": 21,
+          "acceptedSpeed": "0.13417537",
+          "payingSpeed": "0.13588560",
+          "alive": true
+        },
+        {
+          "id": "456eebb6-2582-4893-b8a6-55cc9b74a271",
+          "type": "FIXED",
+          "price": "0.01160000",
+          "limit": "0.15481773",
+          "rigsCount": 25,
+          "acceptedSpeed": "0.13727172",
+          "payingSpeed": "0.13536305",
+          "alive": true
+        },
+        {
+          "id": "b0dfcb4c-6783-42b7-8845-c4e85b52a6b2",
+          "type": "FIXED",
+          "price": "0.01160000",
+          "limit": "0.15481773",
+          "rigsCount": 26,
+          "acceptedSpeed": "0.10734029",
+          "payingSpeed": "0.11312943",
+          "alive": true
+        },
+        {
+          "id": "f7af4498-1060-4c8a-9d14-62e6d9a13d9c",
+          "type": "FIXED",
+          "price": "0.01150000",
+          "limit": "0.15616397",
+          "rigsCount": 20,
+          "acceptedSpeed": "0.15461882",
+          "payingSpeed": "0.13741032",
+          "alive": true
+        },
+        {
+          "id": "35e737e1-88ca-40cf-96fb-5d89bc2a78ea",
+          "type": "FIXED",
+          "price": "0.01150000",
+          "limit": "0.15616397",
+          "rigsCount": 22,
+          "acceptedSpeed": "0.12597227",
+          "payingSpeed": "0.13390276",
+          "alive": true
+        },
+        {
+          "id": "daeb56c1-a7ff-4569-86e5-7df7e9d893ca",
+          "type": "FIXED",
+          "price": "0.01150000",
+          "limit": "0.15616397",
+          "rigsCount": 18,
+          "acceptedSpeed": "0.12284899",
+          "payingSpeed": "0.13302945",
+          "alive": true
+        },
+        {
+          "id": "5b261e41-dfc8-4a2b-bf76-90b69b787a69",
+          "type": "FIXED",
+          "price": "0.01150000",
+          "limit": "0.15616397",
+          "rigsCount": 22,
+          "acceptedSpeed": "0.14158867",
+          "payingSpeed": "0.14010183",
+          "alive": true
+        },
+        {
+          "id": "a6aff7c2-2939-4b4b-9d72-04aea5cb28cf",
+          "type": "FIXED",
+          "price": "0.01140000",
+          "limit": "0.93308502",
+          "rigsCount": 155,
+          "acceptedSpeed": "0.86586540",
+          "payingSpeed": "0.85178507",
+          "alive": true
+        },
+        {
+          "id": "5b99a80f-0da9-4b3b-9745-0865ca98634e",
+          "type": "FIXED",
+          "price": "0.01140000",
+          "limit": "0.93308502",
+          "rigsCount": 135,
+          "acceptedSpeed": "0.86242943",
+          "payingSpeed": "0.83636613",
+          "alive": true
+        },
+        {
+          "id": "88aa5693-2c5d-4621-a20f-16696a3c269b",
+          "type": "FIXED",
+          "price": "0.01140000",
+          "limit": "0.15753383",
+          "rigsCount": 22,
+          "acceptedSpeed": "0.13743895",
+          "payingSpeed": "0.14048838",
+          "alive": true
+        },
+        {
+          "id": "9633adf1-c1a7-48a1-ba23-8b4347b75b84",
+          "type": "FIXED",
+          "price": "0.01130000",
+          "limit": "0.94134240",
+          "rigsCount": 139,
+          "acceptedSpeed": "0.33099881",
+          "payingSpeed": "0.35029753",
+          "alive": true
+        },
+        {
+          "id": "e9eba028-dd2b-4118-8fc0-e7a61a2aa53c",
+          "type": "FIXED",
+          "price": "0.01130000",
+          "limit": "0.15892793",
+          "rigsCount": 23,
+          "acceptedSpeed": "0.11548764",
+          "payingSpeed": "0.11848383",
+          "alive": true
+        },
+        {
+          "id": "4855f889-2296-4404-a89c-33001c3b0e32",
+          "type": "FIXED",
+          "price": "0.01130000",
+          "limit": "0.15892793",
+          "rigsCount": 22,
+          "acceptedSpeed": "0.09111868",
+          "payingSpeed": "0.08982208",
+          "alive": true
+        },
+        {
+          "id": "d8755a24-447a-42dc-8d7c-64328f6a606c",
+          "type": "FIXED",
+          "price": "0.01130000",
+          "limit": "0.15892793",
+          "rigsCount": 27,
+          "acceptedSpeed": "0.02887191",
+          "payingSpeed": "0.03184002",
+          "alive": true
+        },
+        {
+          "id": "8734c774-7cc2-4de4-a1ff-eaa8eda37218",
+          "type": "STANDARD",
+          "price": "0.01580000",
+          "limit": "0.05000000",
+          "rigsCount": 8,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "d80904fd-c0ed-4e77-a846-f66e6f52decb",
+          "type": "STANDARD",
+          "price": "0.01560000",
+          "limit": "0.05000000",
+          "rigsCount": 9,
+          "acceptedSpeed": "0.00137438",
+          "payingSpeed": "0.00113100",
+          "alive": true
+        },
+        {
+          "id": "8aff1fab-d54b-4781-86b5-068631914ce1",
+          "type": "STANDARD",
+          "price": "0.01540000",
+          "limit": "0.05000000",
+          "rigsCount": 8,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00022906",
+          "alive": true
+        },
+        {
+          "id": "9423b4fc-2c79-4d64-9ab7-d441d9d5e809",
+          "type": "STANDARD",
+          "price": "0.01520000",
+          "limit": "0.05000000",
+          "rigsCount": 7,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "b3df7aab-6938-4e45-89e0-6ce4a7c33720",
+          "type": "STANDARD",
+          "price": "0.01500000",
+          "limit": "0.05000000",
+          "rigsCount": 7,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "8369a9ec-a27e-42d5-92ec-a82d6f860ac5",
+          "type": "STANDARD",
+          "price": "0.01480000",
+          "limit": "0.05000000",
+          "rigsCount": 6,
+          "acceptedSpeed": "0.00297784",
+          "payingSpeed": "0.00389410",
+          "alive": true
+        },
+        {
+          "id": "17ea04ee-eb97-4fe1-879b-a2ec2cb7cc4a",
+          "type": "STANDARD",
+          "price": "0.01460000",
+          "limit": "0.05000000",
+          "rigsCount": 7,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "1c8b1ea3-dc58-4036-b5db-dffe673d6097",
+          "type": "STANDARD",
+          "price": "0.01460000",
+          "limit": "0.05000000",
+          "rigsCount": 6,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00094832",
+          "alive": true
+        },
+        {
+          "id": "376e1026-eab6-4de3-8df0-e92c82e2f6d5",
+          "type": "STANDARD",
+          "price": "0.01440000",
+          "limit": "0.05000000",
+          "rigsCount": 5,
+          "acceptedSpeed": "0.01466015",
+          "payingSpeed": "0.01534734",
+          "alive": true
+        },
+        {
+          "id": "950ade4f-619b-48d6-b64a-947e3b6249b0",
+          "type": "STANDARD",
+          "price": "0.01430000",
+          "limit": "0.05000000",
+          "rigsCount": 6,
+          "acceptedSpeed": "0.01398101",
+          "payingSpeed": "0.00043236",
+          "alive": true
+        },
+        {
+          "id": "9b991281-f442-41a0-8ac1-9f89d1f18cb5",
+          "type": "STANDARD",
+          "price": "0.01420000",
+          "limit": "0.05000000",
+          "rigsCount": 8,
+          "acceptedSpeed": "0.00572662",
+          "payingSpeed": "0.00607022",
+          "alive": true
+        },
+        {
+          "id": "f7193154-05a8-42ab-8e61-2e6bc48219fb",
+          "type": "STANDARD",
+          "price": "0.01410000",
+          "limit": "0.05000000",
+          "rigsCount": 5,
+          "acceptedSpeed": "0.02796202",
+          "payingSpeed": "0.01385842",
+          "alive": true
+        },
+        {
+          "id": "09382279-68f4-4378-881b-47a09af78145",
+          "type": "STANDARD",
+          "price": "0.01400000",
+          "limit": "0.05000000",
+          "rigsCount": 4,
+          "acceptedSpeed": "0.01236950",
+          "payingSpeed": "0.01202590",
+          "alive": true
+        },
+        {
+          "id": "161f5ec6-d266-4bf2-b3b2-5533236a541f",
+          "type": "STANDARD",
+          "price": "0.01390000",
+          "limit": "0.05000000",
+          "rigsCount": 2,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00085899",
+          "alive": true
+        },
+        {
+          "id": "2048359c-43e4-48af-aa1c-4baca2e9160c",
+          "type": "STANDARD",
+          "price": "0.01390000",
+          "limit": "0.05000000",
+          "rigsCount": 13741,
+          "acceptedSpeed": "4.32013312",
+          "payingSpeed": "4.50576429",
+          "alive": true
+        },
+        {
+          "id": "45e0eaf4-1543-4db0-baf6-485072decab0",
+          "type": "STANDARD",
+          "price": "0.01380000",
+          "limit": "0.05000000",
+          "rigsCount": 3,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "962179af-e431-4762-a255-d7fccc055e38",
+          "type": "STANDARD",
+          "price": "0.01370000",
+          "limit": "0.05000000",
+          "rigsCount": 4,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00503942",
+          "alive": true
+        },
+        {
+          "id": "818c4922-0068-4b71-b861-01377794ab86",
+          "type": "STANDARD",
+          "price": "0.01360000",
+          "limit": "0.05000000",
+          "rigsCount": 3,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "458b746d-bfd2-4050-8ffe-4c60be0c4d6a",
+          "type": "STANDARD",
+          "price": "0.01360000",
+          "limit": "0.05000000",
+          "rigsCount": 4,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "49a6861c-6c41-4ad5-937f-a748dc75ad6f",
+          "type": "STANDARD",
+          "price": "0.01350000",
+          "limit": "0.05000000",
+          "rigsCount": 4,
+          "acceptedSpeed": "12.89049429",
+          "payingSpeed": "12.42049423",
+          "alive": true
+        },
+        {
+          "id": "7d807a0b-b739-4689-b481-b6fd6953cf15",
+          "type": "STANDARD",
+          "price": "0.01340000",
+          "limit": "0.05000000",
+          "rigsCount": 3,
+          "acceptedSpeed": "0.00022906",
+          "payingSpeed": "0.00045812",
+          "alive": true
+        },
+        {
+          "id": "c93a0460-1613-4453-986e-33bd27eb6e7b",
+          "type": "STANDARD",
+          "price": "0.01330000",
+          "limit": "0.05000000",
+          "rigsCount": 2,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00022906",
+          "alive": true
+        },
+        {
+          "id": "cf34caa5-b29a-4757-853a-ff98a13b9263",
+          "type": "STANDARD",
+          "price": "0.01320000",
+          "limit": "0.05000000",
+          "rigsCount": 2,
+          "acceptedSpeed": "0.00114532",
+          "payingSpeed": "0.00091625",
+          "alive": true
+        },
+        {
+          "id": "4d450ed5-78b7-45e8-89f4-f98fbb766f9b",
+          "type": "STANDARD",
+          "price": "0.01310000",
+          "limit": "0.05000000",
+          "rigsCount": 3,
+          "acceptedSpeed": "0.01398101",
+          "payingSpeed": "0.00555482",
+          "alive": true
+        },
+        {
+          "id": "9f759821-7b83-4d36-b5e8-def884198187",
+          "type": "STANDARD",
+          "price": "0.01300000",
+          "limit": "0.05000000",
+          "rigsCount": 2,
+          "acceptedSpeed": "0.00114532",
+          "payingSpeed": "0.00057266",
+          "alive": true
+        },
+        {
+          "id": "bceab4dc-0a8b-4422-be56-59365e88e25d",
+          "type": "STANDARD",
+          "price": "0.01290000",
+          "limit": "0.05000000",
+          "rigsCount": 2,
+          "acceptedSpeed": "18.97223509",
+          "payingSpeed": "19.15589057",
+          "alive": true
+        },
+        {
+          "id": "a92c6bbd-600a-42b9-aafc-270395ceb26f",
+          "type": "STANDARD",
+          "price": "0.01280000",
+          "limit": "0.05000000",
+          "rigsCount": 2,
+          "acceptedSpeed": "0.00022906",
+          "payingSpeed": "0.00060129",
+          "alive": true
+        },
+        {
+          "id": "1e52685b-3aa8-476d-a465-f9a5ebfa3c59",
+          "type": "STANDARD",
+          "price": "0.01270000",
+          "limit": "0.05000000",
+          "rigsCount": 2,
+          "acceptedSpeed": "0.00786432",
+          "payingSpeed": "0.01056561",
+          "alive": true
+        },
+        {
+          "id": "d5f0baaa-4dec-4465-8558-970469feaee6",
+          "type": "STANDARD",
+          "price": "0.01270000",
+          "limit": "0.05000000",
+          "rigsCount": 467,
+          "acceptedSpeed": "0.11184810",
+          "payingSpeed": "0.07244178",
+          "alive": true
+        },
+        {
+          "id": "f24e2544-81e9-4933-9d97-494630cc2c6c",
+          "type": "STANDARD",
+          "price": "0.01270000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.06990506",
+          "payingSpeed": "0.04266334",
+          "alive": true
+        },
+        {
+          "id": "fa3456e5-3417-4fc3-8a2f-32dad61c355f",
+          "type": "STANDARD",
+          "price": "0.01260000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.01310720",
+          "payingSpeed": "0.01291353",
+          "alive": true
+        },
+        {
+          "id": "d3b53254-53e6-43a0-b349-02051f06a755",
+          "type": "STANDARD",
+          "price": "0.01260000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "47397f35-1435-44ff-ba77-587f9807101a",
+          "type": "STANDARD",
+          "price": "0.01250000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.01310720",
+          "payingSpeed": "0.01179684",
+          "alive": true
+        },
+        {
+          "id": "92f96552-48ce-443d-9752-fe8023bad341",
+          "type": "STANDARD",
+          "price": "0.01250000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "6.24951296",
+          "payingSpeed": "6.28199812",
+          "alive": true
+        },
+        {
+          "id": "2e806ec2-f81e-4193-8967-289b950d5209",
+          "type": "STANDARD",
+          "price": "0.01250000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "04c55c74-5bbc-4e33-b354-bf7895ccab28",
+          "type": "STANDARD",
+          "price": "0.01240000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.01922389",
+          "payingSpeed": "0.01932735",
+          "alive": true
+        },
+        {
+          "id": "7de245c8-7a5a-4906-ae14-d52361756d96",
+          "type": "STANDARD",
+          "price": "0.01240000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00458129",
+          "payingSpeed": "0.00561209",
+          "alive": true
+        },
+        {
+          "id": "f72c0205-a5a0-4fb1-995b-e5b803e0a96a",
+          "type": "STANDARD",
+          "price": "0.01230000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00961194",
+          "payingSpeed": "0.00950619",
+          "alive": true
+        },
+        {
+          "id": "8a340c99-237d-4be4-a795-a491b85565a7",
+          "type": "STANDARD",
+          "price": "0.01230000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "9.84263338",
+          "payingSpeed": "9.92642819",
+          "alive": true
+        },
+        {
+          "id": "7d7ba8d3-1e8d-42a5-9bd7-e3f24df58a89",
+          "type": "STANDARD",
+          "price": "0.01220000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00961194",
+          "payingSpeed": "0.00684331",
+          "alive": true
+        },
+        {
+          "id": "82dd9df9-91f3-49da-af40-2e6323d9204c",
+          "type": "STANDARD",
+          "price": "0.01220000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "ff0095d1-7622-4a07-91c5-51b4b19bf9bd",
+          "type": "STANDARD",
+          "price": "0.01210000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00087381",
+          "payingSpeed": "0.00138870",
+          "alive": true
+        },
+        {
+          "id": "057dc916-d1a6-4aaf-9475-d30da8ce7b0e",
+          "type": "STANDARD",
+          "price": "0.01210000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.01398101",
+          "payingSpeed": "0.02748779",
+          "alive": true
+        },
+        {
+          "id": "5b102404-b392-45ae-88ca-fc9700298a15",
+          "type": "STANDARD",
+          "price": "0.01200000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00174762",
+          "payingSpeed": "0.00240518",
+          "alive": true
+        },
+        {
+          "id": "feb497e1-d934-4e50-a4e6-77d55c7eb235",
+          "type": "STANDARD",
+          "price": "0.01200000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "db93f895-2355-4b37-bb12-d0f15a263da5",
+          "type": "STANDARD",
+          "price": "0.01190000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00611669",
+          "payingSpeed": "0.00584115",
+          "alive": true
+        },
+        {
+          "id": "71201244-6497-48f3-a70a-ea071d65e065",
+          "type": "STANDARD",
+          "price": "0.01190000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "15.23930453",
+          "payingSpeed": "15.61828349",
+          "alive": true
+        },
+        {
+          "id": "620ce11f-d458-4a65-8ee2-5839f5ce656a",
+          "type": "STANDARD",
+          "price": "0.01180000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "56418462-bb0e-4e2c-82e1-e649b560a28a",
+          "type": "STANDARD",
+          "price": "0.01180000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "65fc4532-8ad3-4ef0-874a-04cb57146e35",
+          "type": "STANDARD",
+          "price": "0.01170000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "48ecfa02-e4bd-4056-9732-e3e5320a4d0b",
+          "type": "STANDARD",
+          "price": "0.01160000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "f37799ba-0c6c-484d-b951-f860bc58b5c4",
+          "type": "STANDARD",
+          "price": "0.01160000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "851c4b7e-ab57-4f6f-bce9-13dc5388002a",
+          "type": "STANDARD",
+          "price": "0.01160000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "71fccf16-783c-4ea1-b71e-42d144c57940",
+          "type": "STANDARD",
+          "price": "0.01160000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "9d6c4879-99b3-4f33-a999-1f1df1a79e93",
+          "type": "STANDARD",
+          "price": "0.01160000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "116fe8f6-536c-4bdc-bdcf-59f553c18a48",
+          "type": "STANDARD",
+          "price": "0.01150000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "bfae962f-6d69-4877-afc2-7ea3e1bf8133",
+          "type": "STANDARD",
+          "price": "0.01150000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "6e8ac8ee-148f-4209-b276-522e9658dcd9",
+          "type": "STANDARD",
+          "price": "0.01150000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "97a95765-3022-47a9-a596-c215469dab90",
+          "type": "STANDARD",
+          "price": "0.01150000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "07c4c354-ef06-4713-b5a2-fac8a4958955",
+          "type": "STANDARD",
+          "price": "0.01140000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00174762",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "735d067a-b7d4-4ef0-83b6-8b8ec9c65981",
+          "type": "STANDARD",
+          "price": "0.01140000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "4c2d76e9-c4f4-40f4-b47b-069dbe76e531",
+          "type": "STANDARD",
+          "price": "0.01140000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "36ff5b30-4251-4e7d-9c28-322c55e8080b",
+          "type": "STANDARD",
+          "price": "0.01140000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "217db7f5-fd92-4912-99f6-93f257d1c7b8",
+          "type": "STANDARD",
+          "price": "0.01130000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "a55a1831-e075-4d5e-86aa-f51d200b5565",
+          "type": "STANDARD",
+          "price": "0.01130000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "9631b96b-aa25-4bc6-8620-e056cbb6ac84",
+          "type": "STANDARD",
+          "price": "0.01130000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "174d2935-6c30-4f93-a91f-1271255e2950",
+          "type": "STANDARD",
+          "price": "0.01120000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "8cf80c2f-7b6e-4351-bdf7-d945a45a5dab",
+          "type": "STANDARD",
+          "price": "0.01120000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "0d478b10-0e82-4515-8b0f-bd6e59b1f37b",
+          "type": "STANDARD",
+          "price": "0.01120000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "4db8f745-5742-4aff-bd9a-cc2e5423d0f9",
+          "type": "STANDARD",
+          "price": "0.01110000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "1cfbf1a9-34be-4799-ae86-b5e5ba4e30e7",
+          "type": "STANDARD",
+          "price": "0.01110000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "53a5ca65-241e-4d75-9c1e-42d5e515a364",
+          "type": "STANDARD",
+          "price": "0.01110000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "46c3da25-c6ce-434e-9689-f16ccfaee9e5",
+          "type": "STANDARD",
+          "price": "0.01110000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        }
+      ],
+      "pagination": {
+        "size": 100,
+        "page": 0,
+        "totalPageCount": 3
+      }
+    },
+    "EU": {
+      "updatedTs": "2025-05-03T13:53:06.873066926Z",
+      "totalSpeed": "36.50989000",
+      "marketFactor": "1000000000000.00000000",
+      "displayMarketFactor": "TH",
+      "priceFactor": "1000000000000.00000000",
+      "displayPriceFactor": "TH",
+      "orders": [
+        {
+          "id": "9d8239d2-1035-4066-88fa-4ea82247199b",
+          "type": "FIXED",
+          "price": "0.01180000",
+          "limit": "0.15219370",
+          "rigsCount": 25,
+          "acceptedSpeed": "0.11566722",
+          "payingSpeed": "0.11333702",
+          "alive": true
+        },
+        {
+          "id": "4dfc0960-dadf-4308-97ed-5f3d6db6731c",
+          "type": "FIXED",
+          "price": "0.01160000",
+          "limit": "16.15265024",
+          "rigsCount": 2452,
+          "acceptedSpeed": "12.62720385",
+          "payingSpeed": "12.82591051",
+          "alive": true
+        },
+        {
+          "id": "3a69c136-47f6-4e21-aa46-0c26f6f839a4",
+          "type": "STANDARD",
+          "price": "0.01620000",
+          "limit": "0.09500000",
+          "rigsCount": 8,
+          "acceptedSpeed": "0.07886165",
+          "payingSpeed": "0.07531940",
+          "alive": true
+        },
+        {
+          "id": "9fd7e76f-7b15-4a15-9369-92e239b258f5",
+          "type": "STANDARD",
+          "price": "0.01580000",
+          "limit": "0.05000000",
+          "rigsCount": 5,
+          "acceptedSpeed": "0.01466015",
+          "payingSpeed": "0.01706533",
+          "alive": true
+        },
+        {
+          "id": "001db505-5628-4ea7-9f38-47530b658996",
+          "type": "STANDARD",
+          "price": "0.01560000",
+          "limit": "0.05000000",
+          "rigsCount": 5,
+          "acceptedSpeed": "0.01534734",
+          "payingSpeed": "0.01496080",
+          "alive": true
+        },
+        {
+          "id": "04b31168-a723-44ce-80c8-ddda16efcb83",
+          "type": "STANDARD",
+          "price": "0.01540000",
+          "limit": "0.05000000",
+          "rigsCount": 5,
+          "acceptedSpeed": "0.00847540",
+          "payingSpeed": "0.00870446",
+          "alive": true
+        },
+        {
+          "id": "d54350b1-a366-464d-b001-c6b1de692a11",
+          "type": "STANDARD",
+          "price": "0.01520000",
+          "limit": "0.05000000",
+          "rigsCount": 5,
+          "acceptedSpeed": "0.01580547",
+          "payingSpeed": "0.01763799",
+          "alive": true
+        },
+        {
+          "id": "09c9aa07-cb31-4d2b-8d26-819b0b5eeeab",
+          "type": "STANDARD",
+          "price": "0.01500000",
+          "limit": "0.13000000",
+          "rigsCount": 21,
+          "acceptedSpeed": "0.07077888",
+          "payingSpeed": "0.06930645",
+          "alive": true
+        },
+        {
+          "id": "54c613e1-58ec-47df-a1e4-1deedb9c5512",
+          "type": "STANDARD",
+          "price": "0.01500000",
+          "limit": "0.05000000",
+          "rigsCount": 8,
+          "acceptedSpeed": "0.00114532",
+          "payingSpeed": "0.00068719",
+          "alive": true
+        },
+        {
+          "id": "e5c3f998-6ba4-4fec-9a79-d99c4b0cbd59",
+          "type": "STANDARD",
+          "price": "0.01480000",
+          "limit": "0.05000000",
+          "rigsCount": 6,
+          "acceptedSpeed": "0.00503942",
+          "payingSpeed": "0.00641381",
+          "alive": true
+        },
+        {
+          "id": "e118f3fd-28b3-4665-b512-cfdf62391cc1",
+          "type": "STANDARD",
+          "price": "0.01480000",
+          "limit": "0.23690000",
+          "rigsCount": 34,
+          "acceptedSpeed": "0.19424705",
+          "payingSpeed": "0.11688176",
+          "alive": true
+        },
+        {
+          "id": "a5dfad30-bb8e-45cb-8bf0-b00d2466fb90",
+          "type": "STANDARD",
+          "price": "0.01460000",
+          "limit": "0.05000000",
+          "rigsCount": 7,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "fa0315f2-cb05-491b-b527-47e8fd56144e",
+          "type": "STANDARD",
+          "price": "0.01460000",
+          "limit": "0.05000000",
+          "rigsCount": 6,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00080172",
+          "alive": true
+        },
+        {
+          "id": "6376295a-efe0-4ed2-a875-b45981c94302",
+          "type": "STANDARD",
+          "price": "0.01440000",
+          "limit": "0.05000000",
+          "rigsCount": 5,
+          "acceptedSpeed": "0.01809612",
+          "payingSpeed": "0.01523281",
+          "alive": true
+        },
+        {
+          "id": "0e593afc-5936-4d80-ac70-a6ed91dcf3cc",
+          "type": "STANDARD",
+          "price": "0.01440000",
+          "limit": "0.05000000",
+          "rigsCount": 4,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00317483",
+          "alive": true
+        },
+        {
+          "id": "b644ba53-3e1b-4656-b5b2-fcd9472a7de2",
+          "type": "STANDARD",
+          "price": "0.01420000",
+          "limit": "0.05000000",
+          "rigsCount": 5,
+          "acceptedSpeed": "0.02130303",
+          "payingSpeed": "0.02199023",
+          "alive": true
+        },
+        {
+          "id": "b1b6630b-38a9-4bf1-b998-5558f46bcdb2",
+          "type": "STANDARD",
+          "price": "0.01420000",
+          "limit": "0.05000000",
+          "rigsCount": 6,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.01259857",
+          "alive": true
+        },
+        {
+          "id": "55e50a61-49f4-4f61-b16a-f2e2d45029c1",
+          "type": "STANDARD",
+          "price": "0.01400000",
+          "limit": "0.05000000",
+          "rigsCount": 6,
+          "acceptedSpeed": "0.01969958",
+          "payingSpeed": "0.02210476",
+          "alive": true
+        },
+        {
+          "id": "894436a4-8eab-4b28-b151-8d9e983e1d78",
+          "type": "STANDARD",
+          "price": "0.01390000",
+          "limit": "0.05000000",
+          "rigsCount": 1,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.01248403",
+          "alive": true
+        },
+        {
+          "id": "3a541013-9746-41e7-9149-3292a8c2ec88",
+          "type": "STANDARD",
+          "price": "0.01390000",
+          "limit": "0.05000000",
+          "rigsCount": 4962,
+          "acceptedSpeed": "2.89406976",
+          "payingSpeed": "2.66997357",
+          "alive": true
+        },
+        {
+          "id": "40d1f9dc-7609-4f5d-81dc-b2fe31d05b8d",
+          "type": "STANDARD",
+          "price": "0.01380000",
+          "limit": "0.05000000",
+          "rigsCount": 1,
+          "acceptedSpeed": "0.01466015",
+          "payingSpeed": "0.02038677",
+          "alive": true
+        },
+        {
+          "id": "ab7f8f86-3b78-430b-98f8-be7eaee99a14",
+          "type": "STANDARD",
+          "price": "0.01370000",
+          "limit": "0.05000000",
+          "rigsCount": 1,
+          "acceptedSpeed": "0.02796202",
+          "payingSpeed": "0.01027928",
+          "alive": true
+        },
+        {
+          "id": "342a3f2b-d761-43d5-86fa-4f93b1527a8c",
+          "type": "STANDARD",
+          "price": "0.01360000",
+          "limit": "0.05000000",
+          "rigsCount": 1,
+          "acceptedSpeed": "0.01259857",
+          "payingSpeed": "0.01420202",
+          "alive": true
+        },
+        {
+          "id": "f419a341-2312-4fce-820a-b19243e89c9d",
+          "type": "STANDARD",
+          "price": "0.01350000",
+          "limit": "0.05000000",
+          "rigsCount": 1,
+          "acceptedSpeed": "4.87937365",
+          "payingSpeed": "4.86355654",
+          "alive": true
+        },
+        {
+          "id": "b9297851-7e72-4cce-bca5-4cb7198d5087",
+          "type": "STANDARD",
+          "price": "0.01340000",
+          "limit": "0.05000000",
+          "rigsCount": 1,
+          "acceptedSpeed": "0.00710101",
+          "payingSpeed": "0.00641381",
+          "alive": true
+        },
+        {
+          "id": "7adec682-17ae-43ff-9b36-c5cf8845be6e",
+          "type": "STANDARD",
+          "price": "0.01330000",
+          "limit": "0.05000000",
+          "rigsCount": 1,
+          "acceptedSpeed": "0.04194304",
+          "payingSpeed": "0.01546188",
+          "alive": true
+        },
+        {
+          "id": "26bb5b3a-4f52-4319-b36d-9e8c4161be23",
+          "type": "STANDARD",
+          "price": "0.01320000",
+          "limit": "0.05000000",
+          "rigsCount": 1,
+          "acceptedSpeed": "0.00549755",
+          "payingSpeed": "0.00584115",
+          "alive": true
+        },
+        {
+          "id": "1792f164-ef24-4283-86a7-9e9294247e7f",
+          "type": "STANDARD",
+          "price": "0.01310000",
+          "limit": "0.05000000",
+          "rigsCount": 1,
+          "acceptedSpeed": "0.01398101",
+          "payingSpeed": "0.00483899",
+          "alive": true
+        },
+        {
+          "id": "bb1d5bac-2082-40f9-ac36-b6f8411c4a9d",
+          "type": "STANDARD",
+          "price": "0.01300000",
+          "limit": "0.05000000",
+          "rigsCount": 1,
+          "acceptedSpeed": "0.01168231",
+          "payingSpeed": "0.01060856",
+          "alive": true
+        },
+        {
+          "id": "70965533-5e0d-4a41-93db-e71b0b9d859b",
+          "type": "STANDARD",
+          "price": "0.01290000",
+          "limit": "0.05000000",
+          "rigsCount": 1,
+          "acceptedSpeed": "5.35472810",
+          "payingSpeed": "5.86771989",
+          "alive": true
+        },
+        {
+          "id": "605e736c-ab8e-4bb0-97c3-18b98b3ff917",
+          "type": "STANDARD",
+          "price": "0.01280000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00436906",
+          "payingSpeed": "0.00377957",
+          "alive": true
+        },
+        {
+          "id": "bfd0efd3-8fe5-49ab-9307-429a9646baa4",
+          "type": "STANDARD",
+          "price": "0.01280000",
+          "limit": "0.05000000",
+          "rigsCount": 1,
+          "acceptedSpeed": "0.01122418",
+          "payingSpeed": "0.00973525",
+          "alive": true
+        },
+        {
+          "id": "47c38932-2fd1-4139-968c-995ad7d25062",
+          "type": "STANDARD",
+          "price": "0.01270000",
+          "limit": "0.05000000",
+          "rigsCount": 1,
+          "acceptedSpeed": "0.00699050",
+          "payingSpeed": "0.00764504",
+          "alive": true
+        },
+        {
+          "id": "b13de971-5ab5-49af-be7a-fa74b9c32927",
+          "type": "STANDARD",
+          "price": "0.01270000",
+          "limit": "0.05000000",
+          "rigsCount": 347,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00125985",
+          "alive": true
+        },
+        {
+          "id": "91a15d77-98a7-4d19-b4c5-6f1c7cd44a21",
+          "type": "STANDARD",
+          "price": "0.01260000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00174762",
+          "payingSpeed": "0.00091625",
+          "alive": true
+        },
+        {
+          "id": "bf670bf7-145c-482b-be2e-3566dab56f10",
+          "type": "STANDARD",
+          "price": "0.01260000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00939166",
+          "payingSpeed": "0.00778820",
+          "alive": true
+        },
+        {
+          "id": "119d1781-700e-4aa0-8693-dafba9df70fd",
+          "type": "STANDARD",
+          "price": "0.01250000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.01048576",
+          "payingSpeed": "0.00635655",
+          "alive": true
+        },
+        {
+          "id": "411787df-5974-46e1-a93c-1ad4f345272d",
+          "type": "STANDARD",
+          "price": "0.01250000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00776601",
+          "payingSpeed": "0.00757345",
+          "alive": true
+        },
+        {
+          "id": "4175bfe1-61f5-4e56-b39e-30996c2876bc",
+          "type": "STANDARD",
+          "price": "0.01250000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "30338222-3370-4c6a-80f0-1dc83b9137ac",
+          "type": "STANDARD",
+          "price": "0.01250000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00017179",
+          "alive": true
+        },
+        {
+          "id": "5190d100-7ea9-42a2-8b69-9616a8c32ec2",
+          "type": "STANDARD",
+          "price": "0.01240000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00436906",
+          "payingSpeed": "0.00160345",
+          "alive": true
+        },
+        {
+          "id": "480fd01d-f9c4-4629-9428-1cb04dc504cd",
+          "type": "STANDARD",
+          "price": "0.01240000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00068719",
+          "payingSpeed": "0.00040086",
+          "alive": true
+        },
+        {
+          "id": "32d5991f-d75e-4e41-b5fa-3006d8878ac1",
+          "type": "STANDARD",
+          "price": "0.01230000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00961194",
+          "payingSpeed": "0.00478173",
+          "alive": true
+        },
+        {
+          "id": "93c8e40d-2ba2-475a-9811-790eda5b5824",
+          "type": "STANDARD",
+          "price": "0.01230000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "6.17960789",
+          "payingSpeed": "6.27542682",
+          "alive": true
+        },
+        {
+          "id": "d9a1434d-34f7-448f-8c36-5acddfd34cbb",
+          "type": "STANDARD",
+          "price": "0.01220000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "41c8224b-c503-4771-8e10-a6adbeb59557",
+          "type": "STANDARD",
+          "price": "0.01220000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "8c82f7ee-02fb-4fef-8fe5-ef660da1dc7c",
+          "type": "STANDARD",
+          "price": "0.01210000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00524288",
+          "payingSpeed": "0.00343597",
+          "alive": true
+        },
+        {
+          "id": "911c82dd-7bb7-43af-b24a-e84a852b9b2a",
+          "type": "STANDARD",
+          "price": "0.01210000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "fb10ece6-008b-4f3c-a24e-c41ee27699b6",
+          "type": "STANDARD",
+          "price": "0.01210000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "25b0cdfa-8781-49ef-9a59-33f7c5d76d3e",
+          "type": "STANDARD",
+          "price": "0.01200000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00262144",
+          "payingSpeed": "0.00286331",
+          "alive": true
+        },
+        {
+          "id": "6e0bd65c-2b06-4062-bdad-e9c281d66053",
+          "type": "STANDARD",
+          "price": "0.01200000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00114532",
+          "payingSpeed": "0.00125985",
+          "alive": true
+        },
+        {
+          "id": "dd963bdd-65e9-46a4-921b-edf711f149c4",
+          "type": "STANDARD",
+          "price": "0.01200000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "4e93eabd-82eb-4d21-b5ec-da41b95956a4",
+          "type": "STANDARD",
+          "price": "0.01190000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "d2054681-1968-44b7-a05c-5154e831e94b",
+          "type": "STANDARD",
+          "price": "0.01190000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00174762",
+          "payingSpeed": "0.00114532",
+          "alive": true
+        },
+        {
+          "id": "b5843e84-17d2-42bb-beb6-feb9c59d9435",
+          "type": "STANDARD",
+          "price": "0.01190000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00183251",
+          "alive": true
+        },
+        {
+          "id": "a9bd3333-4006-4d85-9f9b-de940cca7fd5",
+          "type": "STANDARD",
+          "price": "0.01190000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "77a17484-32bc-4d1a-b95b-62c6553474ce",
+          "type": "STANDARD",
+          "price": "0.01180000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00087381",
+          "payingSpeed": "0.00143165",
+          "alive": true
+        },
+        {
+          "id": "78046c26-3eb4-4050-a648-ec5cc5ecadcc",
+          "type": "STANDARD",
+          "price": "0.01180000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.12582912",
+          "payingSpeed": "0.00687194",
+          "alive": true
+        },
+        {
+          "id": "45be5676-3f39-4d13-8760-ada20fe685a5",
+          "type": "STANDARD",
+          "price": "0.01180000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "1f50202e-a01b-4274-b681-439f903fcdec",
+          "type": "STANDARD",
+          "price": "0.01170000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "07993299-2fbc-4b06-a786-ba27cc7bfe84",
+          "type": "STANDARD",
+          "price": "0.01170000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "3.24359509",
+          "payingSpeed": "3.31971623",
+          "alive": true
+        },
+        {
+          "id": "70eb1985-d4d2-4f5d-a827-0d87d874af99",
+          "type": "STANDARD",
+          "price": "0.01160000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "961d423f-15a6-40f2-87d3-74a8a09ae03c",
+          "type": "STANDARD",
+          "price": "0.01160000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "92622a0b-e757-4d34-a9af-a41d9326d4a3",
+          "type": "STANDARD",
+          "price": "0.01160000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "7cacd7bf-4c35-459e-bb0b-a7a5c3907250",
+          "type": "STANDARD",
+          "price": "0.01160000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "ed8e0600-e75d-4f56-8d47-b0bee7bce423",
+          "type": "STANDARD",
+          "price": "0.01150000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "ea729dd0-7ceb-4d40-952f-3eb748503424",
+          "type": "STANDARD",
+          "price": "0.01150000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "aae86463-18c9-4332-9037-51ee9e64ec89",
+          "type": "STANDARD",
+          "price": "0.01150000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "514c3ffc-6490-4362-b0a1-97bb278c0118",
+          "type": "STANDARD",
+          "price": "0.01150000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "a37ce076-a499-43a5-acba-0e78ba2d4645",
+          "type": "STANDARD",
+          "price": "0.01150000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "cd54f991-5461-4a2a-aabf-7af96d7b5c82",
+          "type": "STANDARD",
+          "price": "0.01140000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "ff451388-baef-4377-b5a2-d439ee0b3c23",
+          "type": "STANDARD",
+          "price": "0.01140000",
+          "limit": "0.10000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "33a56db4-582f-49e9-a779-209d99457f87",
+          "type": "STANDARD",
+          "price": "0.01140000",
+          "limit": "0.10000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "46b335f9-0a2e-40ee-9c86-fb76149b7498",
+          "type": "STANDARD",
+          "price": "0.01140000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "50cafea0-2306-45c3-b546-582805d0a8d7",
+          "type": "STANDARD",
+          "price": "0.01140000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "528eaa54-4a8b-4b1b-aa65-11c096bcd5c7",
+          "type": "STANDARD",
+          "price": "0.01130000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "3dad877a-01e9-4453-9ae3-16bc366dace0",
+          "type": "STANDARD",
+          "price": "0.01130000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "470ae25f-aa65-4c99-86c2-a9b410a67528",
+          "type": "STANDARD",
+          "price": "0.01130000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "c9cb4cb3-803a-4e10-bc57-8eefbc13682d",
+          "type": "STANDARD",
+          "price": "0.01120000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "355bbdc0-bba5-4d57-957c-700a0e8a1b3e",
+          "type": "STANDARD",
+          "price": "0.01120000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "955a7e9b-8ace-4279-9269-32ca94ea41db",
+          "type": "STANDARD",
+          "price": "0.01120000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "3d112d18-f984-4747-baf2-96c73a964513",
+          "type": "STANDARD",
+          "price": "0.01120000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "82234284-fc87-43ec-8bc0-4e55aaf7b087",
+          "type": "STANDARD",
+          "price": "0.01120000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "13c1adba-b799-43a1-9acd-da589717385c",
+          "type": "STANDARD",
+          "price": "0.01110000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "2e6cc087-cf88-4fa2-8890-97533f234784",
+          "type": "STANDARD",
+          "price": "0.01110000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "0b748a2e-da60-416e-847c-ac17921fa485",
+          "type": "STANDARD",
+          "price": "0.01100000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "513a3543-83f8-458f-8fb5-ddfdd132e5af",
+          "type": "STANDARD",
+          "price": "0.01100000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "7d82aed1-1575-44c8-9e65-8f1a65539579",
+          "type": "STANDARD",
+          "price": "0.01100000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "927f1532-5f75-423e-9b1a-7a41db486a50",
+          "type": "STANDARD",
+          "price": "0.01100000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "f9f42ebc-e4ec-4243-bb1e-69c8756f794c",
+          "type": "STANDARD",
+          "price": "0.01100000",
+          "limit": "10.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "f82c01ef-5843-481a-adac-ee5b215bb74d",
+          "type": "STANDARD",
+          "price": "0.01090000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "c4155331-6517-4d9d-88ac-eb70244d4ea7",
+          "type": "STANDARD",
+          "price": "0.01090000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "c5ab1be5-9c32-4563-bad2-dd2d654258f9",
+          "type": "STANDARD",
+          "price": "0.01080000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "a53c7125-f4ea-45a1-b6db-3ba09082a993",
+          "type": "STANDARD",
+          "price": "0.01080000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "a4647264-d8bb-4a0a-ab42-47cf8e1955bd",
+          "type": "STANDARD",
+          "price": "0.01080000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "7456286c-fece-49a9-9cee-6616ab1e65d8",
+          "type": "STANDARD",
+          "price": "0.01080000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "eab32bb6-59c6-463d-829a-9cb31f503edf",
+          "type": "STANDARD",
+          "price": "0.01080000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "4cbf6e45-8fe5-4586-8332-fef3359bab09",
+          "type": "STANDARD",
+          "price": "0.01070000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "d22066e7-5996-4eba-ad2e-00a4a4aae849",
+          "type": "STANDARD",
+          "price": "0.01070000",
+          "limit": "0.05000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        },
+        {
+          "id": "87f79a07-c40b-4fba-a64a-b3902da47d3c",
+          "type": "STANDARD",
+          "price": "0.01070000",
+          "limit": "0.00000000",
+          "rigsCount": 0,
+          "acceptedSpeed": "0.00000000",
+          "payingSpeed": "0.00000000",
+          "alive": true
+        }
+      ],
+      "pagination": {
+        "size": 100,
+        "page": 0,
+        "totalPageCount": 3
+      }
+    }
+  }
+}

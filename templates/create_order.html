@@ -1,0 +1,192 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="card bg-dark shadow-sm">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Create New Order</h5>
+    </div>
+    <div class="card-body">
+        <form action="{{ url_for('create_order') }}" method="post">
+            <div class="row">
+                <!-- Algorithm Selection -->
+                <div class="col-md-6 mb-3">
+                    <label for="algorithm" class="form-label">Algorithm</label>
+                    <select class="form-select" id="algorithm" name="algorithm" required>
+                        <option value="" {% if not preselected_algorithm %}selected{% endif %} disabled>Select Algorithm</option>
+                        {% if algorithms and algorithms.get('miningAlgorithms') %}
+                            {% for algo in algorithms.get('miningAlgorithms', []) %}
+                                {% if algo.get('enabled', False) %}
+                                <option value="{{ algo.get('algorithm', '') }}" {% if preselected_algorithm == algo.get('algorithm', '') %}selected{% endif %}>{{ algo.get('title', 'Unknown') }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                    <div class="form-text">Select the mining algorithm</div>
+                </div>
+                
+                <!-- Market Selection -->
+                <div class="col-md-6 mb-3">
+                    <label for="market" class="form-label">Market</label>
+                    <select class="form-select" id="market" name="market" required>
+                        <option value="" {% if not preselected_market %}selected{% endif %} disabled>Select Market</option>
+                        {% if markets %}
+                            {% for market in markets %}
+                                <option value="{{ market }}" {% if preselected_market == market %}selected{% endif %}>{{ market }}</option>
+                            {% endfor %}
+                        {% else %}
+                            <option value="EU" {% if preselected_market == 'EU' %}selected{% endif %}>EU</option>
+                            <option value="USA" {% if preselected_market == 'USA' %}selected{% endif %}>USA</option>
+                        {% endif %}
+                    </select>
+                    <div class="form-text">Select the hashpower market</div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- Price -->
+                <div class="col-md-4 mb-3">
+                    <label for="price" class="form-label">Price (BTC/TH/Day)</label>
+                    <input type="number" class="form-control" id="price" name="price" min="0.00001" step="0.00001" required value="{{ preselected_price }}">
+                    <div class="form-text">Set price per TH/s per day in BTC</div>
+                </div>
+                
+                <!-- Limit -->
+                <div class="col-md-4 mb-3">
+                    <label for="limit" class="form-label">Speed Limit (TH/s)</label>
+                    <input type="number" class="form-control" id="limit" name="limit" min="0.01" step="0.01" required value="{{ preselected_limit }}">
+                    <div class="form-text">Maximum hashpower speed</div>
+                </div>
+                
+                <!-- Amount -->
+                <div class="col-md-4 mb-3">
+                    <label for="amount" class="form-label">Amount (BTC) <small class="text-muted">(Optional)</small></label>
+                    <input type="number" class="form-control" id="amount" name="amount" min="0.001" step="0.001">
+                    <div class="form-text">Initial deposit for the order (min. 0.001 BTC)</div>
+                </div>
+            </div>
+            
+            <!-- Pool Information -->
+            <div class="card bg-secondary mb-3">
+                <div class="card-header">
+                    <h6 class="mb-0">Pool Information</h6>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="pool_option" id="existingPool" value="existing" checked>
+                            <label class="form-check-label" for="existingPool">Use Existing Pool</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="pool_option" id="newPool" value="new">
+                            <label class="form-check-label" for="newPool">Create New Pool</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Existing Pool Selection -->
+                    <div id="existingPoolSection">
+                        <div class="mb-3">
+                            <label for="pool_id" class="form-label">Select Pool</label>
+                            <select class="form-select" id="pool_id" name="pool_id">
+                                <option value="" selected disabled>Select Pool</option>
+                                {% if pools and pools.get('list') %}
+                                    {% for pool in pools.get('list', []) %}
+                                    <option value="{{ pool.get('id', '') }}" data-algorithm="{{ pool.get('algorithm', '') }}">
+                                        {{ pool.get('name', 'Unknown') }} - {{ pool.get('algorithm', 'Unknown') }}
+                                    </option>
+                                    {% endfor %}
+                                {% endif %}
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- New Pool Information -->
+                    <div id="newPoolSection" style="display: none;">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="pool_name" class="form-label">Pool Name</label>
+                                <input type="text" class="form-control" id="pool_name" name="pool_name">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="stratum_hostname" class="form-label">Stratum Hostname</label>
+                                <input type="text" class="form-control" id="stratum_hostname" name="stratum_hostname">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="stratum_port" class="form-label">Stratum Port</label>
+                                <input type="number" class="form-control" id="stratum_port" name="stratum_port">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="username" class="form-label">Username/Wallet</label>
+                                <input type="text" class="form-control" id="username" name="username">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="text" class="form-control" id="password" name="password" placeholder="Usually 'x' or your worker name">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-between mt-4">
+                <a href="{{ url_for('orders') }}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left me-1"></i> Back to Orders
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-plus-circle me-1"></i> Create Order
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Show/hide pool sections based on selection
+    const existingPoolRadio = document.getElementById('existingPool');
+    const newPoolRadio = document.getElementById('newPool');
+    const existingPoolSection = document.getElementById('existingPoolSection');
+    const newPoolSection = document.getElementById('newPoolSection');
+    
+    existingPoolRadio.addEventListener('change', function() {
+        if (this.checked) {
+            existingPoolSection.style.display = 'block';
+            newPoolSection.style.display = 'none';
+        }
+    });
+    
+    newPoolRadio.addEventListener('change', function() {
+        if (this.checked) {
+            existingPoolSection.style.display = 'none';
+            newPoolSection.style.display = 'block';
+        }
+    });
+    
+    // Filter pools based on selected algorithm
+    const algorithmSelect = document.getElementById('algorithm');
+    const poolSelect = document.getElementById('pool_id');
+    
+    algorithmSelect.addEventListener('change', function() {
+        const selectedAlgo = this.value;
+        
+        // Hide all options first
+        Array.from(poolSelect.options).forEach(option => {
+            if (option.value === '') return; // Skip placeholder option
+            
+            const poolAlgo = option.dataset.algorithm;
+            if (poolAlgo === selectedAlgo) {
+                option.style.display = '';
+            } else {
+                option.style.display = 'none';
+            }
+        });
+        
+        // Reset selection
+        poolSelect.value = '';
+    });
+});
+</script>
+{% endblock %}

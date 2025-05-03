@@ -1,0 +1,258 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card bg-dark shadow-sm">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                </h5>
+                <button id="refreshDashboard" class="btn btn-sm btn-outline-secondary">
+                    <i class="fas fa-sync-alt me-1"></i> Refresh
+                </button>
+            </div>
+            <div class="card-body">
+                {% if not account_info %}
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>
+                    Please configure your NiceHash API credentials in the 
+                    <a href="{{ url_for('settings') }}">Settings</a> page.
+                </div>
+                {% else %}
+                <div class="row">
+                    <!-- Account Balance Card -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card bg-secondary h-100">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-wallet me-2"></i>Account Balance</h5>
+                            </div>
+                            <div class="card-body">
+                                {% if account_info and account_info.get('total') %}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="text-muted">Total Balance:</h6>
+                                        <h3>{{ account_info.get('total', {}).get('totalBalance', '0.0') }} BTC</h3>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="text-muted">Available:</h6>
+                                        <h3>{{ account_info.get('total', {}).get('available', '0.0') }} BTC</h3>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <h6 class="text-muted">Pending:</h6>
+                                        <h5>{{ account_info.get('total', {}).get('pending', '0.0') }} BTC</h5>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="alert alert-warning">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    Could not retrieve account balance information
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Active Orders Summary Card -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card bg-secondary h-100">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-shopping-cart me-2"></i>Active Orders</h5>
+                            </div>
+                            <div class="card-body">
+                                {% if active_orders and active_orders.get('list') %}
+                                <h3>{{ active_orders.get('list')|length }} Active Order(s)</h3>
+                                
+                                {% if active_orders.get('list')|length > 0 %}
+                                <div class="mt-3">
+                                    <h6 class="text-muted">Total Power:</h6>
+                                    {% set total_limit = namespace(value=0.0) %}
+                                    {% for order in active_orders.get('list', []) %}
+                                        {% set total_limit.value = total_limit.value + (order.limit|float) %}
+                                    {% endfor %}
+                                    <h4>{{ "%.4f"|format(total_limit.value) }} 
+                                        {% if active_orders.get('list')|length > 0 %}
+                                        {{ active_orders.get('list')[0].get('algorithm', {}).get('title', '') }}
+                                        {% endif %}
+                                    </h4>
+                                </div>
+                                
+                                <div class="mt-3">
+                                    <a href="{{ url_for('orders') }}" class="btn btn-primary">
+                                        <i class="fas fa-search me-1"></i> View All Orders
+                                    </a>
+                                </div>
+                                {% endif %}
+                                
+                                {% else %}
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    No active orders found
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Active Orders Table -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card bg-secondary">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-list me-2"></i>Recent Active Orders</h5>
+                            </div>
+                            <div class="card-body">
+                                {% if active_orders and active_orders.get('list') and active_orders.get('list')|length > 0 %}
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Algorithm</th>
+                                                <th>Market</th>
+                                                <th>Limit</th>
+                                                <th>Price</th>
+                                                <th>Available Amount</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for order in active_orders.get('list', [])[:5] %}
+                                            <tr>
+                                                <td>{{ order.get('algorithm', {}).get('title', 'Unknown') }}</td>
+                                                <td>{{ order.get('market', 'Unknown') }}</td>
+                                                <td>{{ order.get('limit', '0.0') }}</td>
+                                                <td>{{ order.get('price', '0.0') }}</td>
+                                                <td>{{ order.get('availableAmount', '0.0') }} BTC</td>
+                                                <td>
+                                                    <span class="badge bg-success">{{ order.get('status', {}).get('description', 'Unknown') }}</span>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ url_for('orders') }}" class="btn btn-sm btn-outline-primary">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {% else %}
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    No active orders found
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Automation Status Card -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card bg-dark">
+                            <div class="card-header">
+                                <h5 class="mb-0"><i class="fas fa-robot me-2"></i>Automation Status</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6>Status: 
+                                            {% if automation_running %}
+                                            <span class="badge bg-success">Running</span>
+                                            {% else %}
+                                            <span class="badge bg-danger">Stopped</span>
+                                            {% endif %}
+                                        </h6>
+                                    </div>
+                                    <div>
+                                        {% if automation_running %}
+                                        <form action="{{ url_for('stop_automation') }}" method="post">
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="fas fa-stop me-1"></i> Stop Automation
+                                            </button>
+                                        </form>
+                                        {% else %}
+                                        <a href="{{ url_for('automation') }}" class="btn btn-primary">
+                                            <i class="fas fa-cogs me-1"></i> Configure Automation
+                                        </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Order Performance Chart -->
+<div class="row">
+    <div class="col-12">
+        <div class="card bg-dark shadow-sm">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>Order Performance</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="orderPerformanceChart" height="100"></canvas>
+                {% if not account_info %}
+                <div class="alert alert-info mt-3">
+                    <i class="fas fa-info-circle me-2"></i>
+                    Chart data will be available after configuring API credentials
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/chart-config.js') }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    {% if server_time and server_time.get('serverTime') %}
+    // Initialize server time display
+    const serverTimeEpoch = {{ server_time.get('serverTime', 0) }};
+    const localOffset = new Date().getTimezoneOffset() * 60 * 1000;
+    let serverTimeDisplay = document.getElementById('serverTime');
+    
+    function updateServerTime() {
+        const now = new Date(serverTimeEpoch + (Date.now() - {{ server_time.get('serverTime', 0) }}));
+        serverTimeDisplay.textContent = now.toLocaleTimeString();
+    }
+    
+    setInterval(updateServerTime, 1000);
+    updateServerTime();
+    {% endif %}
+    
+    // Initialize order performance chart
+    {% if active_orders and active_orders.get('list') %}
+    const orderLabels = [];
+    const orderData = [];
+    
+    {% for order in active_orders.get('list', [])[:5] %}
+    orderLabels.push('{{ order.get("algorithm", {}).get("title", "Unknown") }}');
+    orderData.push({{ order.get('limit', 0) }});
+    {% endfor %}
+    
+    initOrderPerformanceChart(orderLabels, orderData);
+    {% else %}
+    // Initialize with empty data if no orders
+    initOrderPerformanceChart([], []);
+    {% endif %}
+    
+    // Refresh button event handler
+    document.getElementById('refreshDashboard').addEventListener('click', function() {
+        window.location.reload();
+    });
+});
+</script>
+{% endblock %}
