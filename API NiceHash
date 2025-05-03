@@ -1,0 +1,89 @@
+NiceHash Test and Production platform
+TEST environment
+Generate Api key and Secret for test platform on:
+https://test.nicehash.com (User / Settings / API Keys) Organization ID is displayed just above "+ Create new API key" button. Use https://api-test.nicehash.com for API domain.
+The entire platform runs on testnet. This means that you don’t have to use your own funds to test the platform. This is the opportunity to familiarize yourself with the new system, place hash-power orders and try trading without spending any real money.
+
+PRODUCTION environment
+To use production just generate key the same way on https://www.nicehash.com and use https://api2.nicehash.com for API domain.
+
+Generating an API key
+Visit Test or production website, than navigate to Settings and API Keys.
+Click 'Create New API Key' button
+Enter the name of the key - typically the name of your client application
+Select the permissions your client app needs - that depends on the APIs you intend to use
+Copy / paste API Key and API Secret before closing the window (you will not be able to access that information again)
+Detailed instructions & Sample code GitHub -> nicehash/rest-clients-demo
+
+Signing requests
+All non-public REST API endpoints require requests to be signed.
+
+A signed request needs to contain the following HTTP headers:
+
+X-Time: (current UTC timestamp in ms, if timestamp is more than five minutes apart from server's time, the request will be rejected, example: 1543597115712)
+X-Nonce: (random upto 36 char string, each nonce can be used only once, example: 4ebd366d-76f4-4400-a3b6-e51515d054d6)
+X-Organization-Id: (organization id, example: da41b3bc-3d0b-4226-b7ea-aee73f94a518)
+X-Request-Id: (required, unique identifier of specific request, client should have local awareness that some app action should be done only once on server, if for some reason request is processed by server and client does not know anything about it (request failed). This ID will provide server information that it will not repeat action if it was already processed)
+X-Auth: (API Key + ":" + HMAC signature, example: 4ebd366d-76f4-4400-a3b6-e51515d054d6:fb8484df7941a4d0c337939a73cc8fc09f50bd3309af5e1926baaee4d5059dfc)
+
+HMAC Signature: hmacSHA256 (input, api_secret)
+Input is a byte array composed of ordered fields using zero byte (0x00) as a separator. There is no separator before the first field or after the last field. Some fields are always empty in which case the separators immediately follow one another. If converting HTTP header values, and url parts from string to byte representation you should use ISO-8859-1 encoding. For request body you should use the raw bytes as they are sent to the server. For JSON messages the character encoding should always be UTF-8.
+
+Input structure is the following:
+API Key
+X-Time request header value
+X-Nonce request header value
+Empty field
+X-Organization-Id request header value
+Empty field
+Request method (example: GET, POST, DELETE, PUT, be careful to use upper case)
+Request path (example: /main/api/v2/hashpower/orderBook)
+Request query string (example: algorithm=X16R&page=0&size=100, The query string should be the same as passed to the server - without the leading question mark)
+Additionally, if REST endpoint requires a body it has to be included in input as an extra field prefixed by a delimiter:
+Request body (example: {"test":true} )
+You can use https://api2.nicehash.com/api/v2/time endpoint to get current server time in order to account for any difference with your local system clock.
+
+Example
+Signing a request to get a hashpower order book
+URL: https://api2.nicehash.com/main/api/v2/hashpower/orderBook?algorithm=X16R&page=0&size=100
+HTTP method: GET
+API Key: 4ebd366d-76f4-4400-a3b6-e51515d054d6 (received when API Key is generated at API Keys)
+API Secret: fd8a1652-728b-42fe-82b8-f623e56da8850750f5bf-ce66-4ca7-8b84-93651abc723b (received when API Key is generated at API Keys)
+X-Time: 1543597115712 (current UTC time in ms)
+X-Organization-ID: da41b3bc-3d0b-4226-b7ea-aee73f94a518 (organization ID)
+X-Nonce: 9675d0f8-1325-484b-9594-c9d6d3268890 (generate some random string, for example: UUID.randomUUID().toString(), must be different each time you sign a request)
+
+Input for signing:
+4ebd366d-76f4-4400-a3b6-e51515d054d6⊠1543597115712⊠9675d0f8-1325-484b-9594-c9d6d3268890⊠⊠da41b3bc-3d0b-4226-b7ea-aee73f94a518⊠⊠GET⊠/main/api/v2/hashpower/orderBook⊠algorithm=X16R&page=0&size=100
+
+Signature is generated via HMAC-SHA256 (input, API_SECRET): 21e6a16f6eb34ac476d59f969f548b47fffe3fea318d9c99e77fc710d2fed798
+
+Add header: X-Auth: API_KEY:SIGNATURE -> 4ebd366d-76f4-4400-a3b6-e51515d054d6:21e6a16f6eb34ac476d59f969f548b47fffe3fea318d9c99e77fc710d2fed798
+
+Do NOT include a plain text API Secret in any of the headers of your request. A novice software developer might mistakenly put an API Secret into the second part of X-Auth header value.
+
+Permissions
+VBTD - Wallet / View balances transactions and deposit addresses (VBTD)
+WIFU - Withdraw funds (WIFU)
+EXOR - Exchange / View exchange orders (EXOR)
+VHOR - Hashpower orders / View hashpower orders (VHOR)
+WNWA - Wallet / Whitelist new withdrawal address (WNWA)
+PRCO - Marketplace / Place, refill and cancel hashpower orders (PRCO)
+ELCO - Marketplace / Edit price limit and cancel hashpower orders (ELCO)
+VMDS - Mining / View mining data and statistics (VMDS)
+MARI - Mining / Manage rigs (MARI)
+MAPO - Marketplace / Manage pools (MAPO)
+
+Error format
+Response Schema   |   Example
+500 (application/json)
+{
+error_id : string - error id
+errors : [
+{
+code : number - error code
+message : string - error message
+}
+]
+}
+
