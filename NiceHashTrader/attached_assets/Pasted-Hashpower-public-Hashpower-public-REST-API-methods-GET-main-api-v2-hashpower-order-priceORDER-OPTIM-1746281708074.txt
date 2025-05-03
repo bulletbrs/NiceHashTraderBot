@@ -1,0 +1,348 @@
+Hashpower public
+Hashpower public REST API methods
+
+GET/main/api/v2/hashpower/order/priceORDER OPTIMAL PRICE
+Get optimal current paying price for selected market and algorithm.
+Try it out 
+Parameters
+name	type	description	in	default	options
+market *	string	Market
+query		[ "EU", "USA", "EU_N", "USA_E", "SA", "ASIA" ] example: EU
+algorithm *	string	Mining algorithm
+query		[ "SCRYPT", "SHA256", "SCRYPTNF", "X11", "X13", "KECCAK", "X15", "NIST5", "NEOSCRYPT", "LYRA2RE", "WHIRLPOOLX", "QUBIT", "QUARK", "AXIOM", "LYRA2REV2", "SCRYPTJANENF16", "BLAKE256R8", "BLAKE256R14", "BLAKE256R8VNL", "HODL", "DAGGERHASHIMOTO", "DECRED", "CRYPTONIGHT", "LBRY", "EQUIHASH", "PASCAL", "X11GOST", "SIA", "BLAKE2S", "SKUNK", "CRYPTONIGHTV7", "CRYPTONIGHTHEAVY", "LYRA2Z", "X16R", "CRYPTONIGHTV8", "SHA256ASICBOOST", "ZHASH", "BEAM", "GRINCUCKAROO29", "GRINCUCKATOO31", "LYRA2REV3", "CRYPTONIGHTR", "CUCKOOCYCLE", "GRINCUCKAROOD29", "BEAMV2", "X16RV2", "RANDOMXMONERO", "EAGLESONG", "CUCKAROOM", "GRINCUCKATOO32", "HANDSHAKE", "KAWPOW", "CUCKAROO29BFC", "BEAMV3", "CUCKAROOZ29", "OCTOPUS", "AUTOLYKOS", "ZELHASH", "KADENA", "ETCHASH", "VERUSHASH", "KHEAVYHASH", "NEXAPOW", "IRONFISH", "KARLSENHASH", "ALEPHIUM", "FISHHASH", "PYRINHASH", "XELISHASHV2" ] example: SHA256
+* - required
+Response Schema   |   Example
+200 OK (application/json)
+{
+price : object - Optimal price for order in BTC/factor[TH/Sol/G]/day
+}
+GET/main/api/v2/hashpower/orderBookORDER BOOK
+Hashpower order book for specified algorithm. Response contains orders for all markest and their stats. When there a lot of orders, response will be paged.
+Try it out 
+Parameters
+name	type	description	in	default	options
+algorithm *	string	Mining algorithm
+query		[ "SCRYPT", "SHA256", "SCRYPTNF", "X11", "X13", "KECCAK", "X15", "NIST5", "NEOSCRYPT", "LYRA2RE", "WHIRLPOOLX", "QUBIT", "QUARK", "AXIOM", "LYRA2REV2", "SCRYPTJANENF16", "BLAKE256R8", "BLAKE256R14", "BLAKE256R8VNL", "HODL", "DAGGERHASHIMOTO", "DECRED", "CRYPTONIGHT", "LBRY", "EQUIHASH", "PASCAL", "X11GOST", "SIA", "BLAKE2S", "SKUNK", "CRYPTONIGHTV7", "CRYPTONIGHTHEAVY", "LYRA2Z", "X16R", "CRYPTONIGHTV8", "SHA256ASICBOOST", "ZHASH", "BEAM", "GRINCUCKAROO29", "GRINCUCKATOO31", "LYRA2REV3", "CRYPTONIGHTR", "CUCKOOCYCLE", "GRINCUCKAROOD29", "BEAMV2", "X16RV2", "RANDOMXMONERO", "EAGLESONG", "CUCKAROOM", "GRINCUCKATOO32", "HANDSHAKE", "KAWPOW", "CUCKAROO29BFC", "BEAMV3", "CUCKAROOZ29", "OCTOPUS", "AUTOLYKOS", "ZELHASH", "KADENA", "ETCHASH", "VERUSHASH", "KHEAVYHASH", "NEXAPOW", "IRONFISH", "KARLSENHASH", "ALEPHIUM", "FISHHASH", "PYRINHASH", "XELISHASHV2" ] example: SHA256
+size	integer	Page size (optional, default: 100)
+query	100	example: 100
+page	integer	Page number (optional, default: 0)
+query	0	example: 0
+* - required
+Response Schema   |   Example
+200 OK (application/json)
+{
+stats : {
+{
+updatedTs : string - Timestamp of the order book in ISO format.
+totalSpeed : number - Total speed of the market [TH/Sol/G]/s.
+marketFactor : number - Market factor for the algorithm
+displayMarketFactor : string - Market unit for the algorithm
+priceFactor : number - Price factor for the algorithm
+displayPriceFactor : string - Price unit for the algorithm
+orders : [
+{
+id : string - Order ID
+type : string - Order type - STANDARD, FIXED, BUSINESS
+subType : string - BUSINESS_FIXED_SPEED
+price : number - Price in BTC/factor[TH/Sol/G]/day
+limit : number - Speed limit [TH/Sol/G]/s
+rigsCount : integer - Rigs mining for order
+acceptedSpeed : number - Current accepted speed [TH/Sol/G]/s
+payingSpeed : number - Current paying speed [TH/Sol/G]/s
+alive : boolean - Is order alive?
+myOrder : boolean - Set to true if user is users order, otherwise is not set
+availableAmount : number - Available total amount
+payedAmount : number - Payed amount
+amount : number - Amount
+poolName : string - Pool name
+endTs : string - End timestamp
+bottomLimit : number - Bottom Speed limit [TH/Sol/G]/s
+updatedTs : string - Order last updated timestamp
+estimateDurationInSeconds : integer - Estimated duration in seconds
+}
+]
+pagination : {
+size : integer - Page size
+page : integer - Page number (first page is 0)
+totalPageCount : integer - Total page count
+}
+}
+}
+}
+GET/main/api/v2/hashpower/orders/summariesORDER SUMMARIES
+Get accepted and rejected speeds for rigs and pools, rig count and paying price for selected market and/or algorithm. When no market or algorithm is specified all markets and algorithms are returned.
+Try it out 
+Parameters
+name	type	description	in	default	options
+market	string	Market
+query		[ "EU", "USA", "EU_N", "USA_E", "SA", "ASIA" ] example: EU
+algorithm	string	Mining algorithm
+query		[ "SCRYPT", "SHA256", "SCRYPTNF", "X11", "X13", "KECCAK", "X15", "NIST5", "NEOSCRYPT", "LYRA2RE", "WHIRLPOOLX", "QUBIT", "QUARK", "AXIOM", "LYRA2REV2", "SCRYPTJANENF16", "BLAKE256R8", "BLAKE256R14", "BLAKE256R8VNL", "HODL", "DAGGERHASHIMOTO", "DECRED", "CRYPTONIGHT", "LBRY", "EQUIHASH", "PASCAL", "X11GOST", "SIA", "BLAKE2S", "SKUNK", "CRYPTONIGHTV7", "CRYPTONIGHTHEAVY", "LYRA2Z", "X16R", "CRYPTONIGHTV8", "SHA256ASICBOOST", "ZHASH", "BEAM", "GRINCUCKAROO29", "GRINCUCKATOO31", "LYRA2REV3", "CRYPTONIGHTR", "CUCKOOCYCLE", "GRINCUCKAROOD29", "BEAMV2", "X16RV2", "RANDOMXMONERO", "EAGLESONG", "CUCKAROOM", "GRINCUCKATOO32", "HANDSHAKE", "KAWPOW", "CUCKAROO29BFC", "BEAMV3", "CUCKAROOZ29", "OCTOPUS", "AUTOLYKOS", "ZELHASH", "KADENA", "ETCHASH", "VERUSHASH", "KHEAVYHASH", "NEXAPOW", "IRONFISH", "KARLSENHASH", "ALEPHIUM", "FISHHASH", "PYRINHASH", "XELISHASHV2" ] example: SHA256
+* - required
+Response Schema   |   Example
+200 OK (application/json)
+{
+summaries : {
+{
+profs : [
+{
+type : string - Type of orders
+speed : number - Speed [H/Sol/G]/s
+price : number - Average price in satoshi/factor[H/Sol/G]/sec
+rigCount : integer - Number of rigs
+orderCount : integer - Number of orders
+}
+]
+acceptedPoolSpeed : number - Accepted pool speed [H/Sol/G]/s
+acceptedRigSpeed : number - Accepted rig speed [H/Sol/G]/s
+payingPrice : number - Price paying for speed in satoshi/factor[H/Sol/G]/sec
+rejectedPoolSpeed : number - Rejected pool speed [H/Sol/G]/s
+rejectedRigSpeed : number - Rejected rig speed [H/Sol/G]/s
+}
+}
+}
+GET/main/api/v2/hashpower/orders/summaryORDERS SUMMARY
+Get accepted and rejected speed from pools and rigs, rig count and paying price for selected market and algorithm.
+Try it out 
+Parameters
+name	type	description	in	default	options
+market *	string	Market
+query		[ "EU", "USA", "EU_N", "USA_E", "SA", "ASIA" ] example: EU
+algorithm *	string	Mining algorithm
+query		[ "SCRYPT", "SHA256", "SCRYPTNF", "X11", "X13", "KECCAK", "X15", "NIST5", "NEOSCRYPT", "LYRA2RE", "WHIRLPOOLX", "QUBIT", "QUARK", "AXIOM", "LYRA2REV2", "SCRYPTJANENF16", "BLAKE256R8", "BLAKE256R14", "BLAKE256R8VNL", "HODL", "DAGGERHASHIMOTO", "DECRED", "CRYPTONIGHT", "LBRY", "EQUIHASH", "PASCAL", "X11GOST", "SIA", "BLAKE2S", "SKUNK", "CRYPTONIGHTV7", "CRYPTONIGHTHEAVY", "LYRA2Z", "X16R", "CRYPTONIGHTV8", "SHA256ASICBOOST", "ZHASH", "BEAM", "GRINCUCKAROO29", "GRINCUCKATOO31", "LYRA2REV3", "CRYPTONIGHTR", "CUCKOOCYCLE", "GRINCUCKAROOD29", "BEAMV2", "X16RV2", "RANDOMXMONERO", "EAGLESONG", "CUCKAROOM", "GRINCUCKATOO32", "HANDSHAKE", "KAWPOW", "CUCKAROO29BFC", "BEAMV3", "CUCKAROOZ29", "OCTOPUS", "AUTOLYKOS", "ZELHASH", "KADENA", "ETCHASH", "VERUSHASH", "KHEAVYHASH", "NEXAPOW", "IRONFISH", "KARLSENHASH", "ALEPHIUM", "FISHHASH", "PYRINHASH", "XELISHASHV2" ] example: SHA256
+* - required
+Response Schema   |   Example
+200 OK (application/json)
+{
+profs : [
+{
+type : string - Type of orders
+speed : number - Speed [H/Sol/G]/s
+price : number - Average price in satoshi/factor[H/Sol/G]/sec
+rigCount : integer - Number of rigs
+orderCount : integer - Number of orders
+}
+]
+acceptedPoolSpeed : number - Accepted pool speed [H/Sol/G]/s
+acceptedRigSpeed : number - Accepted rig speed [H/Sol/G]/s
+payingPrice : number - Price paying for speed in satoshi/factor[H/Sol/G]/sec
+rejectedPoolSpeed : number - Rejected pool speed [H/Sol/G]/s
+rejectedRigSpeed : number - Rejected rig speed [H/Sol/G]/s
+}
+GET/main/api/v2/public/algo/historyALGORITHM HISTORY
+Whole history for the selected algorithm.
+Try it out 
+Parameters
+name	type	description	in	default	options
+algorithm *	string	Algorithm code
+query		[ "SCRYPT", "SHA256", "SCRYPTNF", "X11", "X13", "KECCAK", "X15", "NIST5", "NEOSCRYPT", "LYRA2RE", "WHIRLPOOLX", "QUBIT", "QUARK", "AXIOM", "LYRA2REV2", "SCRYPTJANENF16", "BLAKE256R8", "BLAKE256R14", "BLAKE256R8VNL", "HODL", "DAGGERHASHIMOTO", "DECRED", "CRYPTONIGHT", "LBRY", "EQUIHASH", "PASCAL", "X11GOST", "SIA", "BLAKE2S", "SKUNK", "CRYPTONIGHTV7", "CRYPTONIGHTHEAVY", "LYRA2Z", "X16R", "CRYPTONIGHTV8", "SHA256ASICBOOST", "ZHASH", "BEAM", "GRINCUCKAROO29", "GRINCUCKATOO31", "LYRA2REV3", "CRYPTONIGHTR", "CUCKOOCYCLE", "GRINCUCKAROOD29", "BEAMV2", "X16RV2", "RANDOMXMONERO", "EAGLESONG", "CUCKAROOM", "GRINCUCKATOO32", "HANDSHAKE", "KAWPOW", "CUCKAROO29BFC", "BEAMV3", "CUCKAROOZ29", "OCTOPUS", "AUTOLYKOS", "ZELHASH", "KADENA", "ETCHASH", "VERUSHASH", "KHEAVYHASH", "NEXAPOW", "IRONFISH", "KARLSENHASH", "ALEPHIUM", "FISHHASH", "PYRINHASH", "XELISHASHV2" ] example: SHA256
+fromTimestamp	integer	Range from timestamp (inclusive)
+query		example: 1603023402000
+toTimestamp	integer	Range to timestamp (exclusive)
+query		example: 1603109802000
+* - required
+Response Schema   |   Example
+200 OK (application/json)
+[
+[
+number - History of algorithm, list with 4 items: timestamp, speed [TH/Sol/G]/s, price in satoshi/factor[H/Sol/G]/sec and reward (if global parameter is true)
+]
+]
+GET/main/api/v2/public/algo/historyForIntervalALGORITHM HISTORY
+Whole history for the selected algorithm.
+Try it out 
+Parameters
+name	type	description	in	default	options
+algorithm *	string	Algorithm code
+query		[ "SCRYPT", "SHA256", "SCRYPTNF", "X11", "X13", "KECCAK", "X15", "NIST5", "NEOSCRYPT", "LYRA2RE", "WHIRLPOOLX", "QUBIT", "QUARK", "AXIOM", "LYRA2REV2", "SCRYPTJANENF16", "BLAKE256R8", "BLAKE256R14", "BLAKE256R8VNL", "HODL", "DAGGERHASHIMOTO", "DECRED", "CRYPTONIGHT", "LBRY", "EQUIHASH", "PASCAL", "X11GOST", "SIA", "BLAKE2S", "SKUNK", "CRYPTONIGHTV7", "CRYPTONIGHTHEAVY", "LYRA2Z", "X16R", "CRYPTONIGHTV8", "SHA256ASICBOOST", "ZHASH", "BEAM", "GRINCUCKAROO29", "GRINCUCKATOO31", "LYRA2REV3", "CRYPTONIGHTR", "CUCKOOCYCLE", "GRINCUCKAROOD29", "BEAMV2", "X16RV2", "RANDOMXMONERO", "EAGLESONG", "CUCKAROOM", "GRINCUCKATOO32", "HANDSHAKE", "KAWPOW", "CUCKAROO29BFC", "BEAMV3", "CUCKAROOZ29", "OCTOPUS", "AUTOLYKOS", "ZELHASH", "KADENA", "ETCHASH", "VERUSHASH", "KHEAVYHASH", "NEXAPOW", "IRONFISH", "KARLSENHASH", "ALEPHIUM", "FISHHASH", "PYRINHASH", "XELISHASHV2" ] example: SHA256
+fromTimestamp	integer	Range from timestamp (inclusive)
+query		example: 1603023402000
+toTimestamp	integer	Range to timestamp (exclusive)
+query		example: 1603109802000
+global	boolean	Global price
+query	false	example: false
+* - required
+Response Schema   |   Example
+200 OK (application/json)
+[
+[
+number - History of algorithm, list with 4 items: timestamp, speed [TH/Sol/G]/s, price in satoshi/factor[H/Sol/G]/sec and reward (if global parameter is true)
+]
+]
+GET/main/api/v2/public/buy/infoBUY INFO
+Information for each enabled algorithm needed for buying hashpower. Result contains minimum and maximum values for price, limit, information about minimum pool difficulty and more that can be useful in automated application like NicehashBot
+Try it out 
+Response Schema   |   Example
+200 OK (application/json)
+{
+miningAlgorithms : [
+{
+down_step : number - Maximal allowed down step for price
+min_diff_working : number - Minimal working difficulty
+min_limit : number - Minimal value for speed limit
+max_limit : number - Maximal value for speed limit
+speed_text : string - Speed unit
+min_diff_initial : number - Minimal initial difficulty
+name : string - Algorithm name
+algo : integer - Algorithm code
+multi : number - Unit factor
+price_multi : number - Price unit factor
+min_price : number - Minimal value for price in BTC/factor[TH/Sol/G]/day
+max_price : number - Maximal value for price in BTC/factor[TH/Sol/G]/day
+min_amount : number - Minimal allowed amount
+enabledHashpowerMarkets : [
+string - Enabled hashpower markets - EU, USA, EU_N, USA_E, SA, ASIA
+]
+}
+]
+}
+GET/main/api/v2/public/ordersORDERS
+Get all hashpower orders. Request parameter work as filter to fine tune the result. The result is paged, when needed.
+Try it out 
+Parameters
+name	type	description	in	default	options
+algorithm	string	Algorithm
+query		[ "SCRYPT", "SHA256", "SCRYPTNF", "X11", "X13", "KECCAK", "X15", "NIST5", "NEOSCRYPT", "LYRA2RE", "WHIRLPOOLX", "QUBIT", "QUARK", "AXIOM", "LYRA2REV2", "SCRYPTJANENF16", "BLAKE256R8", "BLAKE256R14", "BLAKE256R8VNL", "HODL", "DAGGERHASHIMOTO", "DECRED", "CRYPTONIGHT", "LBRY", "EQUIHASH", "PASCAL", "X11GOST", "SIA", "BLAKE2S", "SKUNK", "CRYPTONIGHTV7", "CRYPTONIGHTHEAVY", "LYRA2Z", "X16R", "CRYPTONIGHTV8", "SHA256ASICBOOST", "ZHASH", "BEAM", "GRINCUCKAROO29", "GRINCUCKATOO31", "LYRA2REV3", "CRYPTONIGHTR", "CUCKOOCYCLE", "GRINCUCKAROOD29", "BEAMV2", "X16RV2", "RANDOMXMONERO", "EAGLESONG", "CUCKAROOM", "GRINCUCKATOO32", "HANDSHAKE", "KAWPOW", "CUCKAROO29BFC", "BEAMV3", "CUCKAROOZ29", "OCTOPUS", "AUTOLYKOS", "ZELHASH", "KADENA", "ETCHASH", "VERUSHASH", "KHEAVYHASH", "NEXAPOW", "IRONFISH", "KARLSENHASH", "ALEPHIUM", "FISHHASH", "PYRINHASH", "XELISHASHV2" ] example: SHA256
+market	string	Market
+query		[ "EU", "USA", "EU_N", "USA_E", "SA", "ASIA" ] example: EU
+op	string	Relation operation
+query		[ "GT", "GE", "LT", "LE" ] example: GT
+timestamp	integer	The timestamp to compare
+query		example: 255135600000000
+page	integer	Page
+query	0	example: 0
+size	integer	Size. Default is 100, maximum is 100
+query	100	example: 100
+* - required
+Response Schema   |   Example
+200 OK (application/json)
+{
+list : [
+{
+id : string - Order ID
+availableAmount : number - Available total amount
+payedAmount : number - Amount payed for hashpower
+endTs : string - End timestamp in ISO format
+updatedTs : string - Order last updated timestamp in ISO format
+estimateDurationInSeconds : integer - Estimated duration in seconds
+type : {
+code : string - Enum code - STANDARD, FIXED, BUSINESS
+description : string - Translated enum
+}
+market : string - Market - EU, USA, EU_N, USA_E, SA, ASIA
+algorithm : {
+algorithm : string - Algorithm - SCRYPT, SHA256, SCRYPTNF, X11, X13, KECCAK, X15, NIST5, NEOSCRYPT, LYRA2RE, WHIRLPOOLX, QUBIT, QUARK, AXIOM, LYRA2REV2, SCRYPTJANENF16, BLAKE256R8, BLAKE256R14, BLAKE256R8VNL, HODL, DAGGERHASHIMOTO, DECRED, CRYPTONIGHT, LBRY, EQUIHASH, PASCAL, X11GOST, SIA, BLAKE2S, SKUNK, CRYPTONIGHTV7, CRYPTONIGHTHEAVY, LYRA2Z, X16R, CRYPTONIGHTV8, SHA256ASICBOOST, ZHASH, BEAM, GRINCUCKAROO29, GRINCUCKATOO31, LYRA2REV3, CRYPTONIGHTR, CUCKOOCYCLE, GRINCUCKAROOD29, BEAMV2, X16RV2, RANDOMXMONERO, EAGLESONG, CUCKAROOM, GRINCUCKATOO32, HANDSHAKE, KAWPOW, CUCKAROO29BFC, BEAMV3, CUCKAROOZ29, OCTOPUS, AUTOLYKOS, ZELHASH, KADENA, ETCHASH, VERUSHASH, KHEAVYHASH, NEXAPOW, IRONFISH, KARLSENHASH, ALEPHIUM, FISHHASH, PYRINHASH, XELISHASHV2
+title : string - Title of the algorithm
+enabled : boolean - Is the algorithm Enabled
+order : integer - Algorithm order number
+}
+status : {
+code : string - Order status code - PENDING, ACTIVE, PENDING_CANCELLATION, CANCELLED, DEAD, EXPIRED, ERROR, ERROR_ON_CREATION, ERROR_ON_CREATION_ON_REVERTING_TRANSACTIONS, COMPLETED, ERROR_MISSING
+description : string - Translated description of status
+}
+liquidation : string - Order liquidation
+meta : string - Order meta
+price : number - Order price in BTC/factor[TH/Sol/G]/day
+limit : number - Speed limit [TH/Sol/G]/s
+bottomLimit : number - Bottom Speed limit [TH/Sol/G]/s
+amount : number - Amount
+displayMarketFactor : string - Unit of market factor
+marketFactor : number - Market factor
+priceFactor : number - Market factor for the algorithm
+displayPriceFactor : string - Market unit for the algorithm
+alive : boolean - Order is alive
+startTs : string - Start timestamp in ISO format
+pool : {
+id : string - Pool id (When creating new pool this value should not be set.)
+name : string - Pool custom name
+algorithm : string - Pool algorithm - SCRYPT, SHA256, SCRYPTNF, X11, X13, KECCAK, X15, NIST5, NEOSCRYPT, LYRA2RE, WHIRLPOOLX, QUBIT, QUARK, AXIOM, LYRA2REV2, SCRYPTJANENF16, BLAKE256R8, BLAKE256R14, BLAKE256R8VNL, HODL, DAGGERHASHIMOTO, DECRED, CRYPTONIGHT, LBRY, EQUIHASH, PASCAL, X11GOST, SIA, BLAKE2S, SKUNK, CRYPTONIGHTV7, CRYPTONIGHTHEAVY, LYRA2Z, X16R, CRYPTONIGHTV8, SHA256ASICBOOST, ZHASH, BEAM, GRINCUCKAROO29, GRINCUCKATOO31, LYRA2REV3, CRYPTONIGHTR, CUCKOOCYCLE, GRINCUCKAROOD29, BEAMV2, X16RV2, RANDOMXMONERO, EAGLESONG, CUCKAROOM, GRINCUCKATOO32, HANDSHAKE, KAWPOW, CUCKAROO29BFC, BEAMV3, CUCKAROOZ29, OCTOPUS, AUTOLYKOS, ZELHASH, KADENA, ETCHASH, VERUSHASH, KHEAVYHASH, NEXAPOW, IRONFISH, KARLSENHASH, ALEPHIUM, FISHHASH, PYRINHASH, XELISHASHV2
+stratumHostname : string - Hostname or ip of the pool
+stratumPort : integer - Port of the pool
+username : string - Username
+password : string - Password (Set password to # when using ethproxy pool.)
+status : string - Verification status - VERIFIED, NOT_VERIFIED
+updatedTs : string
+inMoratorium : boolean
+}
+acceptedCurrentSpeed : number - Current accepted speed [TH/Sol/G]/s
+rigsCount : integer - Rigs count
+organizationId : string - Organization Id
+creatorUserId : string - Creator Id
+soloMiningCoin : string - Solo mining coin - BTC, ETH, XRP, BCH, LTC, ZEC, DASH, XLM, EOS, USDT, BSV, LINK, BAT, PAX, ZRX, HOT, OMG, REP, NEXO, BTG, EURKM, ENJ, MATIC, ELF, SNT, BNT, KNC, MTL, POLY, POWR, GTO, LOOM, CVC, AST, PPT, LRC, KEY, STORJ, STORM, TNT, DATA, AOA, RDN, USDC, FET, ANT, AERGO, LBA, XMR, MITH, BAND, SXP, EURS, WBTC, RVN, UNI, AAVE, FTM, YFI, DOGE, ONEINCH, SUSHI, OCEAN, MKR, CRV, CHZ, GRT, GNO, HBAR, ADA, ALGO, XTZ, SAND, SHIB, STX, GALA, SOL, DOT, ETC, TRX, KSM, EUR, KAS, TBTC, TETH, TXRP, TBCH, TLTC, TZEC, TDASH, TXLM, TEOS, TERC, TBSV, TBTG, TEURKM, TXMR, TRVN, TDOGE, THBAR, TADA, TALGO, TXTZ, TSTX, TTTT, TSOL, TDOT, TETC, TTRX, TEUR, TMARC, TKAS
+soloMiningMergeCoin : string - BTC, ETH, XRP, BCH, LTC, ZEC, DASH, XLM, EOS, USDT, BSV, LINK, BAT, PAX, ZRX, HOT, OMG, REP, NEXO, BTG, EURKM, ENJ, MATIC, ELF, SNT, BNT, KNC, MTL, POLY, POWR, GTO, LOOM, CVC, AST, PPT, LRC, KEY, STORJ, STORM, TNT, DATA, AOA, RDN, USDC, FET, ANT, AERGO, LBA, XMR, MITH, BAND, SXP, EURS, WBTC, RVN, UNI, AAVE, FTM, YFI, DOGE, ONEINCH, SUSHI, OCEAN, MKR, CRV, CHZ, GRT, GNO, HBAR, ADA, ALGO, XTZ, SAND, SHIB, STX, GALA, SOL, DOT, ETC, TRX, KSM, EUR, KAS, TBTC, TETH, TXRP, TBCH, TLTC, TZEC, TDASH, TXLM, TEOS, TERC, TBSV, TBTG, TEURKM, TXMR, TRVN, TDOGE, THBAR, TADA, TALGO, TXTZ, TSTX, TTTT, TSOL, TDOT, TETC, TTRX, TEUR, TMARC, TKAS
+soloMiningRewardAddr : string - Solo mining reward address
+soloReward : [
+{
+id : string
+orderId : string
+coin : string - BTC, ETH, XRP, BCH, LTC, ZEC, DASH, XLM, EOS, USDT, BSV, LINK, BAT, PAX, ZRX, HOT, OMG, REP, NEXO, BTG, EURKM, ENJ, MATIC, ELF, SNT, BNT, KNC, MTL, POLY, POWR, GTO, LOOM, CVC, AST, PPT, LRC, KEY, STORJ, STORM, TNT, DATA, AOA, RDN, USDC, FET, ANT, AERGO, LBA, XMR, MITH, BAND, SXP, EURS, WBTC, RVN, UNI, AAVE, FTM, YFI, DOGE, ONEINCH, SUSHI, OCEAN, MKR, CRV, CHZ, GRT, GNO, HBAR, ADA, ALGO, XTZ, SAND, SHIB, STX, GALA, SOL, DOT, ETC, TRX, KSM, EUR, KAS, TBTC, TETH, TXRP, TBCH, TLTC, TZEC, TDASH, TXLM, TEOS, TERC, TBSV, TBTG, TEURKM, TXMR, TRVN, TDOGE, THBAR, TADA, TALGO, TXTZ, TSTX, TTTT, TSOL, TDOT, TETC, TTRX, TEUR, TMARC, TKAS
+blockHeight : integer
+blockHash : string
+tx : string
+payoutAddress : string
+payoutReward : integer
+payoutRewardBtc : number
+feeAddress : string
+feeReward : integer
+time : integer
+createdTs : string
+depositComplete : boolean
+confirmations : integer
+minConfirmations : integer
+packageId : string
+packageName : string
+secondsEta : integer
+shared : boolean
+depositDonated : boolean
+}
+]
+}
+]
+}
+GET/main/api/v2/public/simplemultialgo/infoSIMPLE STATUS
+Get information about speed and price for each enabled algorithm.
+Try it out 
+Response Schema   |   Example
+200 OK (application/json)
+{
+miningAlgorithms : [
+{
+algorithm : string - Algorithm - SCRYPT, SHA256, SCRYPTNF, X11, X13, KECCAK, X15, NIST5, NEOSCRYPT, LYRA2RE, WHIRLPOOLX, QUBIT, QUARK, AXIOM, LYRA2REV2, SCRYPTJANENF16, BLAKE256R8, BLAKE256R14, BLAKE256R8VNL, HODL, DAGGERHASHIMOTO, DECRED, CRYPTONIGHT, LBRY, EQUIHASH, PASCAL, X11GOST, SIA, BLAKE2S, SKUNK, CRYPTONIGHTV7, CRYPTONIGHTHEAVY, LYRA2Z, X16R, CRYPTONIGHTV8, SHA256ASICBOOST, ZHASH, BEAM, GRINCUCKAROO29, GRINCUCKATOO31, LYRA2REV3, CRYPTONIGHTR, CUCKOOCYCLE, GRINCUCKAROOD29, BEAMV2, X16RV2, RANDOMXMONERO, EAGLESONG, CUCKAROOM, GRINCUCKATOO32, HANDSHAKE, KAWPOW, CUCKAROO29BFC, BEAMV3, CUCKAROOZ29, OCTOPUS, AUTOLYKOS, ZELHASH, KADENA, ETCHASH, VERUSHASH, KHEAVYHASH, NEXAPOW, IRONFISH, KARLSENHASH, ALEPHIUM, FISHHASH, PYRINHASH, XELISHASHV2
+title : string - Title
+speed : number - Mining algorithm speed [H/Sol/G]/s
+paying : number - Mining algorithm price in satoshi/factor[H/Sol/G]/sec
+}
+]
+}
+GET/main/api/v2/public/stats/global/24h24 HOUR STATISTICS
+Get average price and hashpower speed for all enabled algorithms in average for past 24 hours.
+Try it out 
+Response Schema   |   Example
+200 OK (application/json)
+{
+algos : [
+{
+a : integer - Algorithem code
+p : number - Paying price in satoshi/[H/Sol/G]/sec per day
+s : number - Total speed [H/Sol/G]/s
+r : integer - Number of rigs on the algorithm
+o : integer - Number active orders
+}
+]
+}
+GET/main/api/v2/public/stats/global/currentCURRENT STATISTICS
+Get current price and hashpower speed for all enabled algorithms in average for last 5 minutes.
+Try it out 
+Response Schema   |   Example
+200 OK (application/json)
+{
+algos : [
+{
+a : integer - Algorithem code
+p : number - Paying price in satoshi/[H/Sol/G]/sec per day
+s : number - Total speed [H/Sol/G]/s
+r : integer - Number of rigs on the algorithm
+o : integer - Number active orders
+}
+]
+}

@@ -1,0 +1,241 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="card bg-dark shadow-sm mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>Marketplace</h5>
+        <div>
+            <button id="refreshMarketplace" class="btn btn-sm btn-outline-secondary">
+                <i class="fas fa-sync-alt me-1"></i> Refresh
+            </button>
+        </div>
+    </div>
+    
+    <div class="card-body">
+        <!-- Filters -->
+        <form method="get" id="filterForm" class="mb-4">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label for="algorithmSelect" class="form-label">Algorithm</label>
+                    <select class="form-select" id="algorithmSelect" name="algorithm">
+                        <option value="">All Algorithms</option>
+                        {% if algorithms and algorithms.get('miningAlgorithms') %}
+                            {% for algo in algorithms.get('miningAlgorithms', []) %}
+                                {% if algo.get('enabled', False) %}
+                                <option value="{{ algo.get('algorithm', '') }}" {% if selected_algorithm == algo.get('algorithm', '') %}selected{% endif %}>
+                                    {{ algo.get('title', 'Unknown') }}
+                                </option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+                
+                <div class="col-md-4">
+                    <label for="marketSelect" class="form-label">Market</label>
+                    <select class="form-select" id="marketSelect" name="market">
+                        <option value="">All Markets</option>
+                        {% if markets %}
+                            {% for market in markets %}
+                                <option value="{{ market }}" {% if selected_market == market %}selected{% endif %}>
+                                    {{ market }}
+                                </option>
+                            {% endfor %}
+                        {% else %}
+                            <option value="EU">EU</option>
+                            <option value="USA">USA</option>
+                        {% endif %}
+                    </select>
+                </div>
+                
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-filter me-1"></i> Apply Filters
+                    </button>
+                </div>
+            </div>
+        </form>
+        
+        <!-- Market Data Summary -->
+        {% if marketplace_data and marketplace_data.get('stats') %}
+            <div class="row mb-3">
+                {% for stat in marketplace_data.get('stats', []) %}
+                    <div class="col-md-6 mb-3">
+                        <div class="card bg-dark">
+                            <div class="card-header">
+                                <h5 class="mb-0">{{ stat.get('market', '') }} - {{ selected_algorithm }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="text-muted">Total Available Speed</h6>
+                                <h3>{{ stat.get('speed', '0.0') }} {{ stat.get('displayMarketFactor', 'TH') }}/s</h3>
+                                <div class="row">
+                                    <div class="col">
+                                        <small class="text-muted">Orders: {{ marketplace_data.get('orders', [])|selectattr('market', 'equalto', stat.get('market'))|list|length }}</small>
+                                    </div>
+                                    <div class="col text-end">
+                                        <small class="text-muted">Unit: {{ stat.get('displayPriceFactor', 'TH') }}/day</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Orders Table -->
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Price<br>(BTC/{{ marketplace_data.get('stats', [])[0].get('displayPriceFactor', 'TH') }}/day)</th>
+                            <th>Limit<br>({{ marketplace_data.get('stats', [])[0].get('displayMarketFactor', 'TH') }})</th>
+                            <th>Miners</th>
+                            <th>Speed<br>({{ marketplace_data.get('stats', [])[0].get('displayMarketFactor', 'TH') }})</th>
+                            <th>Market</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in marketplace_data.get('orders', []) %}
+                            <tr class="{% if order.get('alive', True) %}{% else %}table-secondary{% endif %}">
+                                <td>
+                                    <code>{{ order.get('id', '')[:8] }}</code>
+                                </td>
+                                <td>{{ order.get('price', '0.0') }}</td>
+                                <td>
+                                    {% if order.get('limit', 0)|float == 0 %}
+                                        <span title="Unlimited">∞</span>
+                                    {% else %}
+                                        {{ order.get('limit', '0.0') }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ order.get('rigsCount', '0') }}</td>
+                                <td>{{ order.get('acceptedSpeed', '0.0') }}</td>
+                                <td><span class="badge bg-secondary">{{ order.get('market', '-') }}</span></td>
+                                <td>
+                                    {% if order.get('alive', True) %}
+                                        <span class="badge bg-success">Active</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">Inactive</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{{ url_for('create_order') }}?algorithm={{ selected_algorithm }}&market={{ order.get('market', '') }}&price={{ order.get('price', '0.0') }}&limit={{ order.get('limit', '0.0') }}" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-plus-circle"></i> Create Similar
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i>
+                {% if not selected_algorithm %}
+                    <strong>Выберите алгоритм для просмотра данных рынка.</strong> 
+                    <p class="mb-0">API NiceHash требует указания алгоритма для получения данных о рынке. Используйте форму выше, чтобы выбрать алгоритм и нажмите "Применить фильтры".</p>
+                {% else %}
+                    <strong>Данные рынка недоступны.</strong>
+                    <p class="mb-0">Убедитесь, что выбранный алгоритм активен и имеет ордера на рынке.</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% if selected_algorithm and marketplace_data %}
+<div class="card bg-dark shadow-sm mt-4">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="fas fa-chart-area me-2"></i>Market Trends</h5>
+    </div>
+    <div class="card-body">
+        <canvas id="marketTrendsChart" height="300"></canvas>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Refresh button event handler
+    document.getElementById('refreshMarketplace').addEventListener('click', function() {
+        window.location.reload();
+    });
+    
+    {% if selected_algorithm and marketplace_data and marketplace_data.get('stats') %}
+    // Initialize market trends chart if we have data
+    const ctx = document.getElementById('marketTrendsChart').getContext('2d');
+    
+    // Prepare data from market stats
+    const marketData = {{ marketplace_data.get('stats', [])|tojson }};
+    const labels = marketData.map(stat => stat.market);
+    const minPrices = marketData.map(stat => parseFloat(stat.min));
+    const maxPrices = marketData.map(stat => parseFloat(stat.max));
+    const avgPrices = marketData.map(stat => parseFloat(stat.avg));
+    
+    const marketTrendsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Min Price',
+                    data: minPrices,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Max Price',
+                    data: maxPrices,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Avg Price',
+                    data: avgPrices,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Price (BTC)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Market'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Price Comparison by Market for {{ selected_algorithm }}'
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false
+                }
+            }
+        }
+    });
+    {% endif %}
+});
+</script>
+{% endblock %}

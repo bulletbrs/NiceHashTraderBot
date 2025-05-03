@@ -1,0 +1,307 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card bg-dark shadow-sm">
+            <div class="card-header">
+                <h4 class="mb-0"><i class="fas fa-chart-bar me-2"></i> Market Analytics</h4>
+            </div>
+            <div class="card-body">
+                <p>Analyze NiceHash hashpower market data, including optimal prices, market summaries, and historical trends.</p>
+                
+                <form method="GET" action="{{ url_for('analytics') }}" class="row g-3 align-items-end">
+                    <div class="col-md-5">
+                        <label for="algorithm" class="form-label">Algorithm</label>
+                        <select class="form-select" id="algorithm" name="algorithm" required>
+                            <option value="" {% if not selected_algorithm %}selected{% endif %}>Select Algorithm</option>
+                            {% if algorithms %}
+                                {% for algo in algorithms %}
+                                    <option value="{{ algo.algo }}" {% if selected_algorithm == algo.algo %}selected{% endif %}>
+                                        {{ algo.name }} ({{ algo.algo }})
+                                    </option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="market" class="form-label">Market</label>
+                        <select class="form-select" id="market" name="market" required>
+                            <option value="" {% if not selected_market %}selected{% endif %}>Select Market</option>
+                            {% if markets %}
+                                {% for market in markets %}
+                                    <option value="{{ market }}" {% if selected_market == market %}selected{% endif %}>
+                                        {{ market }}
+                                    </option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary w-100">Analyze</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if selected_algorithm and selected_market %}
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card bg-dark shadow-sm h-100">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-tag me-2"></i> Optimal Price</h5>
+                </div>
+                <div class="card-body">
+                    {% if optimal_price and optimal_price.get('price') %}
+                        <div class="text-center">
+                            <h6 class="text-muted">Recommended starting price for new orders</h6>
+                            <h1 class="display-4">{{ optimal_price.get('price', '-') }}</h1>
+                            <p class="text-muted">BTC per {{ buy_info.miningAlgorithms|selectattr('algo', 'equalto', selected_algorithm|int)|map(attribute='speed_text')|first|default('TH') }}/day</p>
+                            <div class="mt-3">
+                                <a href="{{ url_for('create_order') }}?algorithm={{ selected_algorithm }}&market={{ selected_market }}&price={{ optimal_price.get('price', '0.0') }}" class="btn btn-outline-success">
+                                    <i class="fas fa-plus-circle me-1"></i> Create Order with Optimal Price
+                                </a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-warning mb-0">
+                            <i class="fas fa-exclamation-triangle me-2"></i> 
+                            Optimal price data not available for the selected algorithm and market.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card bg-dark shadow-sm h-100">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-chart-bar me-2"></i> Market Summary</h5>
+                </div>
+                <div class="card-body">
+                    {% if summary %}
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="card bg-secondary">
+                                    <div class="card-body text-center">
+                                        <h6 class="text-muted">Orders</h6>
+                                        <h4>{{ summary.profs|default([])|sum(attribute='orderCount')|default('0', true) }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card bg-secondary">
+                                    <div class="card-body text-center">
+                                        <h6 class="text-muted">Active Rigs</h6>
+                                        <h4>{{ summary.profs|default([])|sum(attribute='rigCount')|default('0', true) }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card bg-secondary">
+                                    <div class="card-body text-center">
+                                        <h6 class="text-muted">Accepted Speed</h6>
+                                        <h4>{{ summary.acceptedRigSpeed|default('0.0') }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="card bg-secondary">
+                                    <div class="card-body text-center">
+                                        <h6 class="text-muted">Paying Price</h6>
+                                        <h4>{{ summary.payingPrice|default('0.0') }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-warning mb-0">
+                            <i class="fas fa-exclamation-triangle me-2"></i> 
+                            Summary data not available for the selected algorithm and market.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% if algorithm_history and algorithm_history|length > 0 %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card bg-dark shadow-sm">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i> Price & Speed History (Last 24 Hours)</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="algorithmHistoryChart" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if buy_info and buy_info.miningAlgorithms %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card bg-dark shadow-sm">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i> Algorithm Information</h5>
+                </div>
+                <div class="card-body">
+                    {% for algo_info in buy_info.miningAlgorithms %}
+                        {% if algo_info.algo|string == selected_algorithm or algo_info.algo|int == selected_algorithm|int %}
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="card bg-secondary h-100">
+                                        <div class="card-header">Price Range</div>
+                                        <div class="card-body">
+                                            <p><strong>Min Price:</strong> {{ algo_info.min_price }}</p>
+                                            <p><strong>Max Price:</strong> {{ algo_info.max_price }}</p>
+                                            <p><strong>Price Unit:</strong> BTC/{{ algo_info.speed_text }}/day</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card bg-secondary h-100">
+                                        <div class="card-header">Speed Limits</div>
+                                        <div class="card-body">
+                                            <p><strong>Min Limit:</strong> {{ algo_info.min_limit }}</p>
+                                            <p><strong>Max Limit:</strong> {{ algo_info.max_limit }}</p>
+                                            <p><strong>Speed Unit:</strong> {{ algo_info.speed_text }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card bg-secondary h-100">
+                                        <div class="card-header">Other Info</div>
+                                        <div class="card-body">
+                                            <p><strong>Min Amount:</strong> {{ algo_info.min_amount }} BTC</p>
+                                            <p><strong>Down Step:</strong> {{ algo_info.down_step }}</p>
+                                            <p><strong>Available Markets:</strong> {{ algo_info.enabledHashpowerMarkets|join(', ') }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% else %}
+    <div class="alert alert-info">
+        <i class="fas fa-info-circle me-2"></i>
+        <strong>Select algorithm and market to view analytics data.</strong>
+        <p class="mb-0">Use the form above to select an algorithm and market to analyze hashpower market data.</p>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{% if algorithm_history and algorithm_history|length > 0 %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Prepare data for algorithm history chart
+        const historyData = {{ algorithm_history|tojson }};
+        const timestamps = [];
+        const prices = [];
+        const speeds = [];
+        
+        // Extract data points
+        historyData.forEach(dataPoint => {
+            if (dataPoint && dataPoint.length >= 3) {
+                timestamps.push(new Date(dataPoint[0]).toLocaleTimeString());
+                speeds.push(parseFloat(dataPoint[1]));
+                prices.push(parseFloat(dataPoint[2]));  
+            }
+        });
+        
+        // Initialize chart
+        const ctx = document.getElementById('algorithmHistoryChart').getContext('2d');
+        const historyChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: timestamps,
+                datasets: [
+                    {
+                        label: 'Price (BTC/unit/s)',
+                        data: prices,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        yAxisID: 'y',
+                        borderWidth: 2,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Speed (units/s)',
+                        data: speeds,
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        yAxisID: 'y1',
+                        borderWidth: 2,
+                        tension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time'
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'Price'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Speed'
+                        },
+                        grid: {
+                            drawOnChartArea: false,
+                        },
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '{{ selected_algorithm }} Historical Data for {{ selected_market }} Market'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += context.parsed.y.toFixed(8);
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endif %}
+{% endblock %}
